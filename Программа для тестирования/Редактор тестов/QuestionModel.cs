@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 
 namespace Редактор_тестов
 {
-    class QuestionModel 
+    public class QuestionModel 
     {
+        public QuestionModel()
+        {
+            question = "None";
+            PointForQuestion = 1;
+            TrueAswers = 1;
+            SaveQuestion = false;
+        }
         public string question { get; set; }
+        public int PointForQuestion { get; set; }
+        public int TrueAswers { get; set; }
+        public bool SaveQuestion { get; set; }
 
-        public Dictionary<bool, string> answers = new Dictionary<bool, string>();
-        
+        public Dictionary<string,bool> answers = new Dictionary<string, bool>();
+
     }
 }

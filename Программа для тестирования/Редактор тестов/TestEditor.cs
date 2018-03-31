@@ -13,38 +13,37 @@ namespace Редактор_тестов
     public partial class TestEditor : Form
     {
         TestModel test = new TestModel();
-        QuestionModel tmpQuestion = new QuestionModel();
+        int index = 0;
         public TestEditor()
         {
             InitializeComponent();
-            label1.Visible = false;
-            label2.Visible = false;
-            label6.Visible = false;
-            label7.Visible = false;
-            checkedListBox1.Visible = false;
-            textBox4.Visible = false;
-            button1.Visible = false;
-            button2.Visible = false;
-            button3.Visible = false;
-            button4.Visible = false;
+            VisibleControlQuestions(false);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void PreviousQuestion(object sender, EventArgs e)
         {
+            if (index >= 1) 
+                index--;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void NextQuestion(object sender, EventArgs e)
+        {
+            if (index <= test.AmountQuestions) 
+                index++;
+        }
+
+        private void AddItem(object sender, EventArgs e)
         {
             checkedListBox1.Items.Add("Новый ответ");
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void RemoveItem(object sender, EventArgs e)
         {
             if(checkedListBox1.SelectedItem != null)
                 checkedListBox1.Items.RemoveAt(checkedListBox1.SelectedIndex);
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void CheckCountQuestions(object sender, EventArgs e)
         {
             try
             {
@@ -61,6 +60,7 @@ namespace Редактор_тестов
 
             }
         }
+
         private void VisibleControlQuestions(bool isVisible)
         {
             label1.Visible = isVisible;
@@ -73,31 +73,58 @@ namespace Редактор_тестов
             button2.Visible = isVisible;
             button3.Visible = isVisible;
             button4.Visible = isVisible;
+            button5.Visible = isVisible;
+            button6.Visible = isVisible;
+            button7.Visible = isVisible;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void CheckDiscipline(object sender, EventArgs e)
         {
             test.AcademicDiscipline = textBox1.Text;
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void CheckTopic(object sender, EventArgs e)
         {
             test.Topic = textBox2.Text;
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void SaveQuestion(object sender, EventArgs e)
         {
+            if (test.questions[index].SaveQuestion)
+            {
+                test.questions[index].answers.Clear();
+            }
 
+            for (int i = 0; i < checkedListBox1.Items.Count; i++)
+            {
+                test.questions[index].answers.Add(checkedListBox1.Items[i].ToString(), checkedListBox1.GetItemChecked(i));
+                if (checkedListBox1.GetItemChecked(i))
+                    test.questions[index].TrueAswers++;
+
+            }
+            test.questions[index].question = textBox4.Text;
+            test.questions[index].SaveQuestion = true;
         }
 
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void OpenQuestionEditor(object sender, EventArgs e)
         {
-
+            QuestionEditor edit = new QuestionEditor(test, index, checkedListBox1.Items[checkedListBox1.SelectedIndex].ToString(), checkedListBox1.GetItemChecked(checkedListBox1.SelectedIndex));
+            edit.ShowDialog();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void TestMode(object sender, EventArgs e)
         {
 
+            if (checkBox1.Checked)
+            {
+                test.DefaultTest = false;
+                label8.Text = "Балл за вопрос по умолчанию";
+            }
+            else
+            {
+                test.DefaultTest = true;
+                label8.Text = "Максимальное количество баллов";
+            }
         }
     }
 }

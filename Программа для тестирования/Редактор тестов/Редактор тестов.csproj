@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="QuestionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionEditor.Designer.cs">
+      <DependentUpon>QuestionEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuestionModel.cs" />
     <Compile Include="TestModel.cs" />
     <Compile Include="TestEditor.cs">
@@ -56,6 +62,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="QuestionEditor.resx">
+      <DependentUpon>QuestionEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestEditor.resx">
       <DependentUpon>TestEditor.cs</DependentUpon>
     </EmbeddedResource>
