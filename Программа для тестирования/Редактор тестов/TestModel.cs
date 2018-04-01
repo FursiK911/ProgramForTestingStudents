@@ -23,6 +23,7 @@ namespace Редактор_тестов
         public int MaxPoints { get; set; }
         public bool DefaultTest { get; set; }
         public int DefaultPoint { get; set; }
+        public string newAnswer { get; set; }
 
         public List <QuestionModel> questions = new List<QuestionModel>();
     }

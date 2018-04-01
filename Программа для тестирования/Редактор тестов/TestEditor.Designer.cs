@@ -246,7 +246,7 @@
             this.button5.TabIndex = 22;
             this.button5.Text = "Сохранить вопрос";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.SaveQuestion);
+            this.button5.Click += new System.EventHandler(this.ClickSave);
             // 
             // button6
             // 
@@ -293,7 +293,7 @@
             this.checkBox1.Text = "Указывать баллы \r\nдля каждого \r\nвопроса";
             this.checkBox1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.TestMode);
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.TestModelMode);
             // 
             // checkedListBox1
             // 
@@ -307,6 +307,7 @@
             this.checkedListBox1.ScrollAlwaysVisible = true;
             this.checkedListBox1.Size = new System.Drawing.Size(439, 259);
             this.checkedListBox1.TabIndex = 28;
+            this.checkedListBox1.DoubleClick += new System.EventHandler(this.ChangeStateAnswer);
             // 
             // TestEditor
             // 

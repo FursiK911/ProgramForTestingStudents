@@ -32,6 +32,7 @@ namespace Редактор_тестов
 
         private void QuestionEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
+            test.newAnswer = textBox1.Text;
             test.questions[indexQuestion].answers.Add(textBox1.Text,checkBox1.Checked);
         }
     }

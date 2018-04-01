@@ -12,13 +12,25 @@ namespace Редактор_тестов
         {
             question = "None";
             PointForQuestion = 1;
-            TrueAswers = 1;
+            TrueAswers = 0;
             SaveQuestion = false;
         }
         public string question { get; set; }
         public int PointForQuestion { get; set; }
         public int TrueAswers { get; set; }
         public bool SaveQuestion { get; set; }
+        public Dictionary<string,bool> CloneAnswers()
+        {
+            return new Dictionary<string, bool>(answers);
+        }
+        public QuestionModel Clone()
+        {
+            return new QuestionModel { question = this.question, PointForQuestion = this.PointForQuestion,
+                TrueAswers = this.TrueAswers,
+                SaveQuestion = this.SaveQuestion,
+                answers = CloneAnswers()
+            };
+        }
 
         public Dictionary<string,bool> answers = new Dictionary<string, bool>();
 
