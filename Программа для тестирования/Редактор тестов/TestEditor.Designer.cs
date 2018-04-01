@@ -307,7 +307,6 @@
             this.checkedListBox1.ScrollAlwaysVisible = true;
             this.checkedListBox1.Size = new System.Drawing.Size(439, 259);
             this.checkedListBox1.TabIndex = 28;
-            this.checkedListBox1.DoubleClick += new System.EventHandler(this.ChangeStateAnswer);
             // 
             // TestEditor
             // 

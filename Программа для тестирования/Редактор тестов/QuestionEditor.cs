@@ -26,8 +26,17 @@ namespace Редактор_тестов
             this.indexQuestion = indexQuestion;
             this.keyAnswer = keyAnswer;
             textBox1.Text = this.keyAnswer;
-            checkBox1.Checked = test.questions[indexQuestion].answers[keyAnswer];
-            test.questions[indexQuestion].answers.Remove(keyAnswer);
+            try
+            {
+                checkBox1.Checked = test.questions[indexQuestion].answers[keyAnswer];
+                test.questions[indexQuestion].answers.Remove(keyAnswer);
+            }
+            catch(ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Ошибка индекса выделенного ответа!");
+                this.Close();
+            }
+            
         }
 
         private void QuestionEditor_FormClosing(object sender, FormClosingEventArgs e)

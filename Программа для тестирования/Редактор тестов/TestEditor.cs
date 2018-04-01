@@ -73,7 +73,7 @@ namespace Редактор_тестов
 
         private void NextQuestion(object sender, EventArgs e)
         {
-            if (index < test.AmountQuestions)
+            if (index < test.AmountQuestions - 1)
             {
                 SaveData();
                 index++;
@@ -83,6 +83,7 @@ namespace Редактор_тестов
 
         private void PrintQuestion(int number)
         {
+            int i = 0;
             textBox4.Text = test.questions[number].question;
             checkedListBox1.Items.Clear();
 
@@ -91,19 +92,23 @@ namespace Редактор_тестов
                 checkedListBox1.Items.Add(s);
             }
 
-            for (int i = 0; i < test.questions[number].answers.Count; i++)
+            foreach (bool p in test.questions[number].answers.Values)
             {
-                foreach (bool p in test.questions[number].answers.Values)
-                {
-                    checkedListBox1.SetItemChecked(i, p);
-                }
+                checkedListBox1.SetItemChecked(i++, p);
             }
         }
 
         private void AddItem(object sender, EventArgs e)
         {
-            checkedListBox1.Items.Add("Новый ответ");
-            tmpQuestion.answers.Add(checkedListBox1.Items[checkedListBox1.Items.Count - 1].ToString(), false);
+            try
+            {
+                checkedListBox1.Items.Add("Новый ответ " + checkedListBox1.Items.Count);
+                tmpQuestion.answers.Add(checkedListBox1.Items[checkedListBox1.Items.Count - 1].ToString(), false);
+            }
+            catch
+            {
+                MessageBox.Show("'Новый ответ "+ checkedListBox1.Items.Count + "' уже существует");
+            }
         }
 
         private void RemoveItem(object sender, EventArgs e)
@@ -166,14 +171,17 @@ namespace Редактор_тестов
             tmpQuestion.answers.Clear();
             tmpQuestion.TrueAswers = 0;
 
+            tmpQuestion.question = textBox4.Text;
             for (int i = 0; i < checkedListBox1.Items.Count; i++)
             {
                 if (checkedListBox1.GetItemChecked(i))
+                {
                     tmpQuestion.TrueAswers++;
-
-                tmpQuestion.answers.Add(checkedListBox1.Items[i].ToString(), checkedListBox1.GetItemChecked(i));
+                    tmpQuestion.answers.Add(checkedListBox1.Items[i].ToString(), true);
+                }
+                else
+                    tmpQuestion.answers.Add(checkedListBox1.Items[i].ToString(), false);
             }
-            tmpQuestion.question = textBox4.Text;
 
             if (tmpQuestion.SaveQuestion)
             {
@@ -182,8 +190,8 @@ namespace Редактор_тестов
             }
             else
             {
-                test.questions.Add(tmpQuestion.Clone());
                 tmpQuestion.SaveQuestion = true;
+                test.questions.Add(tmpQuestion.Clone());
             }
         }
 
@@ -194,14 +202,21 @@ namespace Редактор_тестов
 
         private void OpenQuestionEditor(object sender, EventArgs e)//Переделать
         {
-            string tmpAnswer = checkedListBox1.Items[checkedListBox1.SelectedIndex].ToString();
-            bool tmpCheckState = checkedListBox1.GetItemChecked(checkedListBox1.SelectedIndex);
-            QuestionEditor edit = new QuestionEditor(test, index, tmpAnswer, tmpCheckState);
-            edit.ShowDialog();
+            SaveData();
+            try
+            {
+                string tmpAnswer = checkedListBox1.Items[checkedListBox1.SelectedIndex].ToString();
+                bool tmpCheckState = checkedListBox1.GetItemChecked(checkedListBox1.SelectedIndex);
 
-            int i = checkedListBox1.SelectedIndex;
-            checkedListBox1.Items.RemoveAt(i);
-            checkedListBox1.Items.Insert(i, test.newAnswer);
+                QuestionEditor edit = new QuestionEditor(test, index, tmpAnswer, tmpCheckState);
+                edit.ShowDialog();
+            }
+            catch
+            {
+                MessageBox.Show("Выберите элемент");
+            }
+
+            PrintQuestion(index);
             SaveData();
         }
 
@@ -217,18 +232,6 @@ namespace Редактор_тестов
             {
                 test.DefaultTest = true;
                 label8.Text = "Максимальное количество баллов";
-            }
-        }
-
-        private void ChangeStateAnswer(object sender, EventArgs e)
-        {
-            try
-            {
-                tmpQuestion.answers[checkedListBox1.SelectedItem.ToString()] = !checkedListBox1.GetItemChecked(checkedListBox1.SelectedIndex);
-            }
-            catch
-            {
-                MessageBox.Show("Упс!");
             }
         }
     }
