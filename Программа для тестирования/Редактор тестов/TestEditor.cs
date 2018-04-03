@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Runtime.Serialization.Json;
 
 namespace Редактор_тестов
 {
@@ -20,12 +22,12 @@ namespace Редактор_тестов
             InitializeComponent();
             tmpQuestion.SaveQuestion = false;
             VisibleControlQuestions(false);
-            label10.Visible = false;
-            textBox6.Visible = false;
+            lb_pointForQuestion.Visible = false;
+            tb_pointForQuestion.Visible = false;
         }
 
 
-        private void ClearTmpQuestion()
+        private void DataInQuestion()
         {
             if (index + 1 > test.questions.Count)
             {
@@ -34,27 +36,24 @@ namespace Редактор_тестов
                 tmpQuestion.SaveQuestion = false;
                 tmpQuestion.PointForQuestion = 1;
                 tmpQuestion.TrueAswers = 1;
-                checkedListBox1.Items.Clear();
-                textBox4.Text = "";
+                clb_answers.Items.Clear();
+                tb_question.Text = "";
             }
             else
             {
                 tmpQuestion.question = test.questions[index].question;
 
-                checkedListBox1.Items.Clear();
+                clb_answers.Items.Clear();
                 tmpQuestion.answers = test.questions[index].answers;
 
                 foreach (string s in tmpQuestion.answers.Keys)
                 {
-                    checkedListBox1.Items.Add(s);
+                    clb_answers.Items.Add(s);
                 }
 
-                for (int i = 0; i < tmpQuestion.answers.Count; i++)
+                for (int i = 0; i < test.questions[index].answers.Count; i++)
                 {
-                    foreach (bool p in tmpQuestion.answers.Values)
-                    {
-                        checkedListBox1.SetItemChecked(i,p);
-                    }
+                    clb_answers.SetItemChecked(i, test.questions[index].answers[clb_answers.Items[i].ToString()]);
                 }
 
                 tmpQuestion.SaveQuestion = true;
@@ -63,137 +62,68 @@ namespace Редактор_тестов
             }
         }
 
-        private void PreviousQuestion(object sender, EventArgs e)
-        {
-            if (index >= 1)
-            {
-                SaveData();
-                index--;
-                ClearTmpQuestion();
-            }
-        }
-
-        private void NextQuestion(object sender, EventArgs e)
-        {
-            if (index < test.AmountQuestions - 1)
-            {
-                SaveData();
-                index++;
-                ClearTmpQuestion();
-            }
-        }
-
         private void PrintQuestion(int number)
         {
-            int i = 0;
-            textBox4.Text = test.questions[number].question;
-            checkedListBox1.Items.Clear();
+            tb_academicDiscipline.Text = test.AcademicDiscipline;
+            tb_topic.Text = test.Topic;
+            tb_amountQuestions.Text = test.AmountQuestions.ToString();
+            tb_question.Text = test.questions[number].question;
+            cb_defaultTest.Checked = !test.DefaultTest;
+            tb_points.Text = test.questions[number].question;
+            clb_answers.Items.Clear();
 
             foreach (string s in test.questions[number].answers.Keys)
             {
-                checkedListBox1.Items.Add(s);
+                clb_answers.Items.Add(s);
             }
 
-            foreach (bool p in test.questions[number].answers.Values)
+            for (int i = 0; i < test.questions[number].answers.Count; i++)
             {
-                checkedListBox1.SetItemChecked(i++, p);
-            }
-        }
-
-        private void AddItem(object sender, EventArgs e)
-        {
-            try
-            {
-                checkedListBox1.Items.Add("Новый ответ " + checkedListBox1.Items.Count);
-                tmpQuestion.answers.Add(checkedListBox1.Items[checkedListBox1.Items.Count - 1].ToString(), false);
-            }
-            catch
-            {
-                MessageBox.Show("'Новый ответ "+ checkedListBox1.Items.Count + "' уже существует");
-            }
-            SaveData();
-        }
-
-        private void RemoveItem(object sender, EventArgs e)
-        {
-            if (checkedListBox1.SelectedItem != null)
-            {
-                tmpQuestion.answers.Remove(checkedListBox1.SelectedItem.ToString());
-                checkedListBox1.Items.RemoveAt(checkedListBox1.SelectedIndex);
-            }
-            SaveData();
-        }
-
-        private void CheckCountQuestions(object sender, EventArgs e)
-        {
-            try
-            {
-                if (textBox3.Text != "" && int.Parse(textBox3.Text) != 0)
-                {
-                    VisibleControlQuestions(true);
-                    test.AmountQuestions = int.Parse(textBox3.Text);
-                }
-                else
-                    VisibleControlQuestions(false);
-            }
-            catch(FormatException)
-            {
-                MessageBox.Show("Введены некорректные данные!");
-                textBox3.Text = "";
+                clb_answers.SetItemChecked(i, test.questions[number].answers[clb_answers.Items[i].ToString()]);
             }
         }
 
         private void VisibleControlQuestions(bool isVisible)
         {
-            label1.Visible = isVisible;
-            label2.Visible = isVisible;
-            label6.Visible = isVisible;
-            label7.Visible = isVisible;
-            checkedListBox1.Visible = isVisible;
-            textBox4.Visible = isVisible;
-            button1.Visible = isVisible;
-            button2.Visible = isVisible;
-            button3.Visible = isVisible;
-            button4.Visible = isVisible;
-            button7.Visible = isVisible;
+            lb_previousQuestion.Visible = isVisible;
+            lb_nextQuestion.Visible = isVisible;
+            lb_questions.Visible = isVisible;
+            lb_answers.Visible = isVisible;
+            clb_answers.Visible = isVisible;
+            tb_question.Visible = isVisible;
+            bt_previousQuestion.Visible = isVisible;
+            bt_nextQuestion.Visible = isVisible;
+            bt_addAnwer.Visible = isVisible;
+            bt_deleteAnswer.Visible = isVisible;
+            bt_editAnswer.Visible = isVisible;
             if (!test.DefaultTest)
             {
-                label10.Visible = true;
-                textBox6.Visible = true;
+                lb_pointForQuestion.Visible = true;
+                tb_pointForQuestion.Visible = true;
             }
             else
             {
-                label10.Visible = false;
-                textBox6.Visible = false;
+                lb_pointForQuestion.Visible = false;
+                tb_pointForQuestion.Visible = false;
             }
-        }
-
-        private void CheckDiscipline(object sender, EventArgs e)
-        {
-            test.AcademicDiscipline = textBox1.Text;
-        }
-
-        private void CheckTopic(object sender, EventArgs e)
-        {
-            test.Topic = textBox2.Text;
         }
 
         private void SaveData()
         {
-            tmpQuestion.question = textBox4.Text;
+            tmpQuestion.question = tb_question.Text;
             tmpQuestion.answers.Clear();
             tmpQuestion.TrueAswers = 0;
 
-            tmpQuestion.question = textBox4.Text;
-            for (int i = 0; i < checkedListBox1.Items.Count; i++)
+            tmpQuestion.question = tb_question.Text;
+            for (int i = 0; i < clb_answers.Items.Count; i++)
             {
-                if (checkedListBox1.GetItemChecked(i))
+                if (clb_answers.GetItemChecked(i))
                 {
                     tmpQuestion.TrueAswers++;
-                    tmpQuestion.answers.Add(checkedListBox1.Items[i].ToString(), true);
+                    tmpQuestion.answers.Add(clb_answers.Items[i].ToString(), true);
                 }
                 else
-                    tmpQuestion.answers.Add(checkedListBox1.Items[i].ToString(), false);
+                    tmpQuestion.answers.Add(clb_answers.Items[i].ToString(), false);
             }
 
             if (tmpQuestion.SaveQuestion)
@@ -208,13 +138,113 @@ namespace Редактор_тестов
             }
         }
 
-        private void OpenQuestionEditor(object sender, EventArgs e)//Переделать
+        private void ClearAllControl()
+        {
+            tb_academicDiscipline.Text = "";
+            tb_topic.Text = "";
+            tb_amountQuestions.Text = "";
+            tb_question.Text = "";
+            tb_points.Text = "";
+            tb_pointForQuestion.Text = "";
+            clb_answers.Items.Clear();
+            cb_defaultTest.Checked = false;
+            index = 0;
+        }
+
+        private void clb_answers_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            SaveData();
+        }
+
+        private void tb_academicDiscipline_TextChanged(object sender, EventArgs e)
+        {
+            test.AcademicDiscipline = tb_academicDiscipline.Text;
+        }
+
+        private void tb_topic_TextChanged(object sender, EventArgs e)
+        {
+            test.Topic = tb_topic.Text;
+        }
+
+        private void tb_amountQuestions_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tb_amountQuestions.Text != "" && int.Parse(tb_amountQuestions.Text) != 0)
+                {
+                    VisibleControlQuestions(true);
+                    test.AmountQuestions = int.Parse(tb_amountQuestions.Text);
+                }
+                else
+                    VisibleControlQuestions(false);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Введены некорректные данные!");
+                tb_amountQuestions.Text = "";
+            }
+        }
+
+        private void tb_points_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!test.DefaultTest)
+                {
+                    test.DefaultPoint = double.Parse(tb_points.Text);
+                }
+                else
+                {
+                    test.DefaultPoint = test.MaxPoints / test.AmountQuestions;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void cb_defaultTest_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_defaultTest.Checked)
+            {
+                lb_pointForQuestion.Visible = true;
+                tb_pointForQuestion.Visible = true;
+                tb_points.Text = "";
+                test.DefaultTest = false;
+                lb_points.Text = "Балл за вопрос по умолчанию";
+            }
+            else
+            {
+                lb_pointForQuestion.Visible = false;
+                tb_pointForQuestion.Visible = false;
+                tb_points.Text = "";
+                test.DefaultTest = true;
+                lb_points.Text = "Максимальное количество баллов";
+            }
+        }
+
+        private void bt_addAnwer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clb_answers.Items.Add("Новый ответ " + clb_answers.Items.Count);
+                tmpQuestion.answers.Add(clb_answers.Items[clb_answers.Items.Count - 1].ToString(), false);
+            }
+            catch
+            {
+                MessageBox.Show("'Новый ответ " + clb_answers.Items.Count + "' уже существует");
+            }
+            SaveData();
+        }
+
+        private void bt_editAnswer_Click(object sender, EventArgs e)
         {
             SaveData();
             try
             {
-                string tmpAnswer = checkedListBox1.Items[checkedListBox1.SelectedIndex].ToString();
-                bool tmpCheckState = checkedListBox1.GetItemChecked(checkedListBox1.SelectedIndex);
+                string tmpAnswer = clb_answers.Items[clb_answers.SelectedIndex].ToString();
+                bool tmpCheckState = clb_answers.GetItemChecked(clb_answers.SelectedIndex);
 
                 QuestionEditor edit = new QuestionEditor(test, index, tmpAnswer, tmpCheckState);
                 edit.ShowDialog();
@@ -228,56 +258,147 @@ namespace Редактор_тестов
             SaveData();
         }
 
-        private void TestModelMode(object sender, EventArgs e)
+        private void bt_deleteAnswer_Click(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
+            if (clb_answers.SelectedItem != null)
             {
-                label10.Visible = true;
-                textBox6.Visible = true;
-                textBox5.Text = "";
-                test.DefaultTest = false;
-                label8.Text = "Балл за вопрос по умолчанию";
+                tmpQuestion.answers.Remove(clb_answers.SelectedItem.ToString());
+                clb_answers.Items.RemoveAt(clb_answers.SelectedIndex);
             }
-            else
-            {
-                label10.Visible = false;
-                textBox6.Visible = false;
-                textBox5.Text = "";
-                test.DefaultTest = true;
-                label8.Text = "Максимальное количество баллов";
-            }
+            SaveData();
         }
 
-        private void setDefaultPointForQuestion(object sender, EventArgs e)
+        private void tb_pointForQuestion_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                if (!test.DefaultTest)
-                {
-                    test.DefaultPoint = double.Parse(textBox5.Text);
-                }
-                else
-                {
-                    test.DefaultPoint = test.MaxPoints / test.AmountQuestions;
-                }
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void setPointForQuestion(object sender, EventArgs e)
-        {
-            try
-            {
-                if(textBox6.Text != null && textBox6.Text != "0")
-                    tmpQuestion.PointForQuestion = double.Parse(textBox6.Text);
+                if (tb_pointForQuestion.Text != null && tb_pointForQuestion.Text != "0")
+                    tmpQuestion.PointForQuestion = double.Parse(tb_pointForQuestion.Text);
             }
             catch
             {
                 MessageBox.Show("Введены некорректные данные!");
-                textBox6.Text = "";
+                tb_pointForQuestion.Text = "";
+            }
+        }
+
+        private void bt_previousQuestion_Click(object sender, EventArgs e)
+        {
+            SaveData();
+            if (tmpQuestion.TrueAswers != 0)
+            {
+                if (index >= 1)
+                {
+
+                    index--;
+                    DataInQuestion();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Должен присутствовать хотя бы один правильный ответ!");
+            }
+        }
+
+        private void bt_nextQuestion_Click(object sender, EventArgs e)
+        {
+            SaveData();
+            if (tmpQuestion.TrueAswers != 0)
+            {
+                if (index < test.AmountQuestions - 1)
+                {
+                    index++;
+                    DataInQuestion();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Должен присутствовать хотя бы один правильный ответ!");
+            }
+        }
+
+        private void ms_create_Click(object sender, EventArgs e)
+        {
+            string message = "Вы собираетесь создать новый тест. Сохранить старый?";
+            string caption = "Сохранить?";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
+            DialogResult result;
+            result = MessageBox.Show(this, message, caption, buttons);
+
+            if (result == DialogResult.Yes)
+            {
+                ms_saveAs_Click(sender, e);
+                test = new TestModel();
+                tmpQuestion = new QuestionModel();
+                ClearAllControl();
+            }
+
+            else if (result == DialogResult.No)
+            {
+                test = new TestModel();
+                tmpQuestion = new QuestionModel();
+                ClearAllControl();
+            }
+        }
+
+        private void ms_open_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opd = new OpenFileDialog();
+            if (opd.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = new FileStream(opd.FileName, FileMode.Open))
+                {
+                    DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
+
+                    test = (TestModel)jsonFormatter.ReadObject(fs);
+
+                    PrintQuestion(0);
+                }
+            }
+        }
+
+        private void ms_save_Click(object sender, EventArgs e)
+        {
+            SaveData();
+            DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
+
+            using (FileStream fs = new FileStream(test.AcademicDiscipline + "." + test.Topic + ".json", FileMode.Create))
+            {
+                jsonFormatter.WriteObject(fs, test);
+            }
+        }
+
+        private void ms_saveAs_Click(object sender, EventArgs e)
+        {
+            SaveData();
+            DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
+            SaveFileDialog spd = new SaveFileDialog();
+            if (spd.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = new FileStream(spd.FileName + ".json", FileMode.Create))
+                {
+                    jsonFormatter.WriteObject(fs, test);
+                }
+            }
+        }
+
+        private void ms_exit_Click(object sender, EventArgs e)
+        {
+            string message = "Cохранить этот тест?";
+            string caption = "Выход";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
+            DialogResult result;
+            result = MessageBox.Show(this, message, caption, buttons);
+
+            if (result == DialogResult.Yes)
+            {
+                ms_saveAs_Click(sender, e);
+                this.Close();
+            }
+
+            else if (result == DialogResult.No)
+            {
+                this.Close();
             }
         }
     }

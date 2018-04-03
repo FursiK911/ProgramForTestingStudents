@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Программа для тестирования", "Программа для тестирования\Программа для тестирования.csproj", "{ACFCF9D5-94FB-4FEC-ADD9-0CC0D8D5CA51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramForTesting", "Программа для тестирования\ProgramForTesting.csproj", "{ACFCF9D5-94FB-4FEC-ADD9-0CC0D8D5CA51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Редактор тестов", "Редактор тестов\Редактор тестов.csproj", "{29E82208-FF5C-4828-95F6-15AF654FEE13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEditor", "Редактор тестов\TestEditor.csproj", "{29E82208-FF5C-4828-95F6-15AF654FEE13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

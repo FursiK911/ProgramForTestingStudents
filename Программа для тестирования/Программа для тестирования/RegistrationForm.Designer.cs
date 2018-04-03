@@ -185,6 +185,7 @@
             this.MinimumSize = new System.Drawing.Size(419, 334);
             this.Name = "Form1";
             this.Text = "Регистрация";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -28,312 +28,322 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.bt_previousQuestion = new System.Windows.Forms.Button();
+            this.bt_nextQuestion = new System.Windows.Forms.Button();
+            this.lb_previousQuestion = new System.Windows.Forms.Label();
+            this.lb_nextQuestion = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сохранитьКакToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.ms_create = new System.Windows.Forms.ToolStripMenuItem();
+            this.ms_open = new System.Windows.Forms.ToolStripMenuItem();
+            this.ms_save = new System.Windows.Forms.ToolStripMenuItem();
+            this.ms_saveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.ms_help = new System.Windows.Forms.ToolStripMenuItem();
+            this.ms_exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tb_academicDiscipline = new System.Windows.Forms.TextBox();
+            this.lb_academicDiscipline = new System.Windows.Forms.Label();
+            this.lb_topic = new System.Windows.Forms.Label();
+            this.tb_topic = new System.Windows.Forms.TextBox();
+            this.lb_amountQuestions = new System.Windows.Forms.Label();
+            this.tb_amountQuestions = new System.Windows.Forms.TextBox();
+            this.tb_question = new System.Windows.Forms.TextBox();
+            this.lb_questions = new System.Windows.Forms.Label();
+            this.lb_answers = new System.Windows.Forms.Label();
+            this.bt_addAnwer = new System.Windows.Forms.Button();
+            this.bt_deleteAnswer = new System.Windows.Forms.Button();
+            this.bt_editAnswer = new System.Windows.Forms.Button();
+            this.lb_points = new System.Windows.Forms.Label();
+            this.tb_points = new System.Windows.Forms.TextBox();
+            this.cb_defaultTest = new System.Windows.Forms.CheckBox();
+            this.clb_answers = new System.Windows.Forms.CheckedListBox();
+            this.lb_pointForQuestion = new System.Windows.Forms.Label();
+            this.tb_pointForQuestion = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // bt_previousQuestion
             // 
-            this.button1.Location = new System.Drawing.Point(457, 390);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 57);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "←";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.PreviousQuestion);
+            this.bt_previousQuestion.Location = new System.Drawing.Point(457, 390);
+            this.bt_previousQuestion.Name = "bt_previousQuestion";
+            this.bt_previousQuestion.Size = new System.Drawing.Size(118, 57);
+            this.bt_previousQuestion.TabIndex = 1;
+            this.bt_previousQuestion.Text = "←";
+            this.bt_previousQuestion.UseVisualStyleBackColor = true;
+            this.bt_previousQuestion.Click += new System.EventHandler(this.bt_previousQuestion_Click);
             // 
-            // button2
+            // bt_nextQuestion
             // 
-            this.button2.Location = new System.Drawing.Point(581, 390);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(118, 57);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "→";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.NextQuestion);
+            this.bt_nextQuestion.Location = new System.Drawing.Point(581, 390);
+            this.bt_nextQuestion.Name = "bt_nextQuestion";
+            this.bt_nextQuestion.Size = new System.Drawing.Size(118, 57);
+            this.bt_nextQuestion.TabIndex = 2;
+            this.bt_nextQuestion.Text = "→";
+            this.bt_nextQuestion.UseVisualStyleBackColor = true;
+            this.bt_nextQuestion.Click += new System.EventHandler(this.bt_nextQuestion_Click);
             // 
-            // label1
+            // lb_previousQuestion
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(454, 374);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Предыдущий вопрос";
+            this.lb_previousQuestion.AutoSize = true;
+            this.lb_previousQuestion.Location = new System.Drawing.Point(454, 374);
+            this.lb_previousQuestion.Name = "lb_previousQuestion";
+            this.lb_previousQuestion.Size = new System.Drawing.Size(112, 13);
+            this.lb_previousQuestion.TabIndex = 3;
+            this.lb_previousQuestion.Text = "Предыдущий вопрос";
             // 
-            // label2
+            // lb_nextQuestion
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(578, 374);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Следующий вопрос";
+            this.lb_nextQuestion.AutoSize = true;
+            this.lb_nextQuestion.Location = new System.Drawing.Point(578, 374);
+            this.lb_nextQuestion.Name = "lb_nextQuestion";
+            this.lb_nextQuestion.Size = new System.Drawing.Size(105, 13);
+            this.lb_nextQuestion.TabIndex = 4;
+            this.lb_nextQuestion.Text = "Следующий вопрос";
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.создатьToolStripMenuItem,
-            this.открытьToolStripMenuItem,
-            this.сохранитьToolStripMenuItem,
-            this.сохранитьКакToolStripMenuItem,
-            this.помощьToolStripMenuItem});
+            this.ms_create,
+            this.ms_open,
+            this.ms_save,
+            this.ms_saveAs,
+            this.ms_help,
+            this.ms_exit});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(711, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // создатьToolStripMenuItem
+            // ms_create
             // 
-            this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
-            this.создатьToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
-            this.создатьToolStripMenuItem.Text = "Создать";
+            this.ms_create.Name = "ms_create";
+            this.ms_create.Size = new System.Drawing.Size(62, 20);
+            this.ms_create.Text = "Создать";
+            this.ms_create.Click += new System.EventHandler(this.ms_create_Click);
             // 
-            // открытьToolStripMenuItem
+            // ms_open
             // 
-            this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
-            this.открытьToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.открытьToolStripMenuItem.Text = "Открыть";
+            this.ms_open.Name = "ms_open";
+            this.ms_open.Size = new System.Drawing.Size(75, 20);
+            this.ms_open.Text = "Открыть...";
+            this.ms_open.Click += new System.EventHandler(this.ms_open_Click);
             // 
-            // сохранитьToolStripMenuItem
+            // ms_save
             // 
-            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
-            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.ms_save.Name = "ms_save";
+            this.ms_save.Size = new System.Drawing.Size(77, 20);
+            this.ms_save.Text = "Сохранить";
+            this.ms_save.Click += new System.EventHandler(this.ms_save_Click);
             // 
-            // сохранитьКакToolStripMenuItem
+            // ms_saveAs
             // 
-            this.сохранитьКакToolStripMenuItem.Name = "сохранитьКакToolStripMenuItem";
-            this.сохранитьКакToolStripMenuItem.Size = new System.Drawing.Size(107, 20);
-            this.сохранитьКакToolStripMenuItem.Text = "Сохранить как...";
+            this.ms_saveAs.Name = "ms_saveAs";
+            this.ms_saveAs.Size = new System.Drawing.Size(107, 20);
+            this.ms_saveAs.Text = "Сохранить как...";
+            this.ms_saveAs.Click += new System.EventHandler(this.ms_saveAs_Click);
             // 
-            // помощьToolStripMenuItem
+            // ms_help
             // 
-            this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
-            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.помощьToolStripMenuItem.Text = "Помощь";
+            this.ms_help.Name = "ms_help";
+            this.ms_help.Size = new System.Drawing.Size(68, 20);
+            this.ms_help.Text = "Помощь";
             // 
-            // textBox1
+            // ms_exit
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 47);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(162, 20);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.TextChanged += new System.EventHandler(this.CheckDiscipline);
+            this.ms_exit.Name = "ms_exit";
+            this.ms_exit.Size = new System.Drawing.Size(53, 20);
+            this.ms_exit.Text = "Выход";
+            this.ms_exit.Click += new System.EventHandler(this.ms_exit_Click);
             // 
-            // label3
+            // tb_academicDiscipline
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Учебная дисциплина";
+            this.tb_academicDiscipline.Location = new System.Drawing.Point(12, 47);
+            this.tb_academicDiscipline.Name = "tb_academicDiscipline";
+            this.tb_academicDiscipline.Size = new System.Drawing.Size(162, 20);
+            this.tb_academicDiscipline.TabIndex = 6;
+            this.tb_academicDiscipline.TextChanged += new System.EventHandler(this.tb_academicDiscipline_TextChanged);
             // 
-            // label4
+            // lb_academicDiscipline
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(194, 31);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Тема";
+            this.lb_academicDiscipline.AutoSize = true;
+            this.lb_academicDiscipline.Location = new System.Drawing.Point(9, 31);
+            this.lb_academicDiscipline.Name = "lb_academicDiscipline";
+            this.lb_academicDiscipline.Size = new System.Drawing.Size(113, 13);
+            this.lb_academicDiscipline.TabIndex = 7;
+            this.lb_academicDiscipline.Text = "Учебная дисциплина";
             // 
-            // textBox2
+            // lb_topic
             // 
-            this.textBox2.Location = new System.Drawing.Point(197, 47);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(192, 20);
-            this.textBox2.TabIndex = 8;
-            this.textBox2.TextChanged += new System.EventHandler(this.CheckTopic);
+            this.lb_topic.AutoSize = true;
+            this.lb_topic.Location = new System.Drawing.Point(194, 31);
+            this.lb_topic.Name = "lb_topic";
+            this.lb_topic.Size = new System.Drawing.Size(34, 13);
+            this.lb_topic.TabIndex = 9;
+            this.lb_topic.Text = "Тема";
             // 
-            // label5
+            // tb_topic
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(406, 31);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Кл-во вопросов";
+            this.tb_topic.Location = new System.Drawing.Point(197, 47);
+            this.tb_topic.Name = "tb_topic";
+            this.tb_topic.Size = new System.Drawing.Size(192, 20);
+            this.tb_topic.TabIndex = 8;
+            this.tb_topic.TextChanged += new System.EventHandler(this.tb_topic_TextChanged);
             // 
-            // textBox3
+            // lb_amountQuestions
             // 
-            this.textBox3.Location = new System.Drawing.Point(409, 47);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(68, 20);
-            this.textBox3.TabIndex = 10;
-            this.textBox3.TextChanged += new System.EventHandler(this.CheckCountQuestions);
+            this.lb_amountQuestions.AutoSize = true;
+            this.lb_amountQuestions.Location = new System.Drawing.Point(406, 31);
+            this.lb_amountQuestions.Name = "lb_amountQuestions";
+            this.lb_amountQuestions.Size = new System.Drawing.Size(86, 13);
+            this.lb_amountQuestions.TabIndex = 11;
+            this.lb_amountQuestions.Text = "Кл-во вопросов";
             // 
-            // textBox4
+            // tb_amountQuestions
             // 
-            this.textBox4.Location = new System.Drawing.Point(12, 106);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(687, 64);
-            this.textBox4.TabIndex = 13;
+            this.tb_amountQuestions.Location = new System.Drawing.Point(409, 47);
+            this.tb_amountQuestions.Name = "tb_amountQuestions";
+            this.tb_amountQuestions.Size = new System.Drawing.Size(68, 20);
+            this.tb_amountQuestions.TabIndex = 10;
+            this.tb_amountQuestions.TextChanged += new System.EventHandler(this.tb_amountQuestions_TextChanged);
             // 
-            // label6
+            // tb_question
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 90);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Вопрос";
+            this.tb_question.Location = new System.Drawing.Point(12, 106);
+            this.tb_question.Multiline = true;
+            this.tb_question.Name = "tb_question";
+            this.tb_question.Size = new System.Drawing.Size(687, 64);
+            this.tb_question.TabIndex = 13;
             // 
-            // label7
+            // lb_questions
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 173);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Варианты ответов";
+            this.lb_questions.AutoSize = true;
+            this.lb_questions.Location = new System.Drawing.Point(9, 90);
+            this.lb_questions.Name = "lb_questions";
+            this.lb_questions.Size = new System.Drawing.Size(44, 13);
+            this.lb_questions.TabIndex = 14;
+            this.lb_questions.Text = "Вопрос";
             // 
-            // button3
+            // lb_answers
             // 
-            this.button3.Location = new System.Drawing.Point(457, 189);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(254, 39);
-            this.button3.TabIndex = 20;
-            this.button3.Text = "Добавить вариант ответа";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.AddItem);
+            this.lb_answers.AutoSize = true;
+            this.lb_answers.Location = new System.Drawing.Point(9, 173);
+            this.lb_answers.Name = "lb_answers";
+            this.lb_answers.Size = new System.Drawing.Size(100, 13);
+            this.lb_answers.TabIndex = 15;
+            this.lb_answers.Text = "Варианты ответов";
             // 
-            // button4
+            // bt_addAnwer
             // 
-            this.button4.Location = new System.Drawing.Point(457, 279);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(255, 39);
-            this.button4.TabIndex = 21;
-            this.button4.Text = "Удалить вариант ответа";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.RemoveItem);
+            this.bt_addAnwer.Location = new System.Drawing.Point(457, 189);
+            this.bt_addAnwer.Name = "bt_addAnwer";
+            this.bt_addAnwer.Size = new System.Drawing.Size(254, 39);
+            this.bt_addAnwer.TabIndex = 20;
+            this.bt_addAnwer.Text = "Добавить вариант ответа";
+            this.bt_addAnwer.UseVisualStyleBackColor = true;
+            this.bt_addAnwer.Click += new System.EventHandler(this.bt_addAnwer_Click);
             // 
-            // button7
+            // bt_deleteAnswer
             // 
-            this.button7.Location = new System.Drawing.Point(457, 234);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(255, 39);
-            this.button7.TabIndex = 24;
-            this.button7.Text = "Изменить вариант ответа";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.OpenQuestionEditor);
+            this.bt_deleteAnswer.Location = new System.Drawing.Point(457, 279);
+            this.bt_deleteAnswer.Name = "bt_deleteAnswer";
+            this.bt_deleteAnswer.Size = new System.Drawing.Size(255, 39);
+            this.bt_deleteAnswer.TabIndex = 21;
+            this.bt_deleteAnswer.Text = "Удалить вариант ответа";
+            this.bt_deleteAnswer.UseVisualStyleBackColor = true;
+            this.bt_deleteAnswer.Click += new System.EventHandler(this.bt_deleteAnswer_Click);
             // 
-            // label8
+            // bt_editAnswer
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(499, 31);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(184, 13);
-            this.label8.TabIndex = 26;
-            this.label8.Text = "Максимальное количество баллов";
+            this.bt_editAnswer.Location = new System.Drawing.Point(457, 234);
+            this.bt_editAnswer.Name = "bt_editAnswer";
+            this.bt_editAnswer.Size = new System.Drawing.Size(255, 39);
+            this.bt_editAnswer.TabIndex = 24;
+            this.bt_editAnswer.Text = "Изменить вариант ответа";
+            this.bt_editAnswer.UseVisualStyleBackColor = true;
+            this.bt_editAnswer.Click += new System.EventHandler(this.bt_editAnswer_Click);
             // 
-            // textBox5
+            // lb_points
             // 
-            this.textBox5.Location = new System.Drawing.Point(502, 47);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(83, 20);
-            this.textBox5.TabIndex = 25;
-            this.textBox5.TextChanged += new System.EventHandler(this.setDefaultPointForQuestion);
+            this.lb_points.AutoSize = true;
+            this.lb_points.Location = new System.Drawing.Point(499, 31);
+            this.lb_points.Name = "lb_points";
+            this.lb_points.Size = new System.Drawing.Size(184, 13);
+            this.lb_points.TabIndex = 26;
+            this.lb_points.Text = "Максимальное количество баллов";
             // 
-            // checkBox1
+            // tb_points
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(591, 47);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(121, 43);
-            this.checkBox1.TabIndex = 27;
-            this.checkBox1.Text = "Указывать баллы \r\nдля каждого \r\nвопроса";
-            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.TestModelMode);
+            this.tb_points.Location = new System.Drawing.Point(502, 47);
+            this.tb_points.Name = "tb_points";
+            this.tb_points.Size = new System.Drawing.Size(83, 20);
+            this.tb_points.TabIndex = 25;
+            this.tb_points.TextChanged += new System.EventHandler(this.tb_points_TextChanged);
             // 
-            // checkedListBox1
+            // cb_defaultTest
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "Один",
-            "Два",
-            "Три"});
-            this.checkedListBox1.Location = new System.Drawing.Point(12, 189);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.ScrollAlwaysVisible = true;
-            this.checkedListBox1.Size = new System.Drawing.Size(439, 259);
-            this.checkedListBox1.TabIndex = 28;
+            this.cb_defaultTest.AutoSize = true;
+            this.cb_defaultTest.Location = new System.Drawing.Point(591, 47);
+            this.cb_defaultTest.Name = "cb_defaultTest";
+            this.cb_defaultTest.Size = new System.Drawing.Size(121, 43);
+            this.cb_defaultTest.TabIndex = 27;
+            this.cb_defaultTest.Text = "Указывать баллы \r\nдля каждого \r\nвопроса";
+            this.cb_defaultTest.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.cb_defaultTest.UseVisualStyleBackColor = true;
+            this.cb_defaultTest.CheckedChanged += new System.EventHandler(this.cb_defaultTest_CheckedChanged);
             // 
-            // label10
+            // clb_answers
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(457, 340);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 13);
-            this.label10.TabIndex = 30;
-            this.label10.Text = "Балл за вопрос:";
+            this.clb_answers.FormattingEnabled = true;
+            this.clb_answers.Location = new System.Drawing.Point(12, 189);
+            this.clb_answers.Name = "clb_answers";
+            this.clb_answers.ScrollAlwaysVisible = true;
+            this.clb_answers.Size = new System.Drawing.Size(439, 259);
+            this.clb_answers.TabIndex = 28;
+            this.clb_answers.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clb_answers_ItemCheck);
             // 
-            // textBox6
+            // lb_pointForQuestion
             // 
-            this.textBox6.Location = new System.Drawing.Point(552, 337);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(131, 20);
-            this.textBox6.TabIndex = 31;
-            this.textBox6.TextChanged += new System.EventHandler(this.setPointForQuestion);
+            this.lb_pointForQuestion.AutoSize = true;
+            this.lb_pointForQuestion.Location = new System.Drawing.Point(457, 340);
+            this.lb_pointForQuestion.Name = "lb_pointForQuestion";
+            this.lb_pointForQuestion.Size = new System.Drawing.Size(89, 13);
+            this.lb_pointForQuestion.TabIndex = 30;
+            this.lb_pointForQuestion.Text = "Балл за вопрос:";
+            // 
+            // tb_pointForQuestion
+            // 
+            this.tb_pointForQuestion.Location = new System.Drawing.Point(552, 337);
+            this.tb_pointForQuestion.Name = "tb_pointForQuestion";
+            this.tb_pointForQuestion.Size = new System.Drawing.Size(131, 20);
+            this.tb_pointForQuestion.TabIndex = 31;
+            this.tb_pointForQuestion.TextChanged += new System.EventHandler(this.tb_pointForQuestion_TextChanged);
             // 
             // TestEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(711, 459);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.checkedListBox1);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.tb_pointForQuestion);
+            this.Controls.Add(this.lb_pointForQuestion);
+            this.Controls.Add(this.clb_answers);
+            this.Controls.Add(this.cb_defaultTest);
+            this.Controls.Add(this.lb_points);
+            this.Controls.Add(this.tb_points);
+            this.Controls.Add(this.bt_editAnswer);
+            this.Controls.Add(this.bt_deleteAnswer);
+            this.Controls.Add(this.bt_addAnwer);
+            this.Controls.Add(this.lb_answers);
+            this.Controls.Add(this.lb_questions);
+            this.Controls.Add(this.tb_question);
+            this.Controls.Add(this.lb_amountQuestions);
+            this.Controls.Add(this.tb_amountQuestions);
+            this.Controls.Add(this.lb_topic);
+            this.Controls.Add(this.tb_topic);
+            this.Controls.Add(this.lb_academicDiscipline);
+            this.Controls.Add(this.tb_academicDiscipline);
+            this.Controls.Add(this.lb_nextQuestion);
+            this.Controls.Add(this.lb_previousQuestion);
+            this.Controls.Add(this.bt_nextQuestion);
+            this.Controls.Add(this.bt_previousQuestion);
             this.Controls.Add(this.menuStrip1);
             this.Name = "TestEditor";
             this.Text = "Редактор тестов";
@@ -345,34 +355,35 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button bt_previousQuestion;
+        private System.Windows.Forms.Button bt_nextQuestion;
+        private System.Windows.Forms.Label lb_previousQuestion;
+        private System.Windows.Forms.Label lb_nextQuestion;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem создатьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem открытьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сохранитьКакToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.ToolStripMenuItem ms_create;
+        private System.Windows.Forms.ToolStripMenuItem ms_open;
+        private System.Windows.Forms.ToolStripMenuItem ms_save;
+        private System.Windows.Forms.ToolStripMenuItem ms_saveAs;
+        private System.Windows.Forms.ToolStripMenuItem ms_help;
+        private System.Windows.Forms.TextBox tb_academicDiscipline;
+        private System.Windows.Forms.Label lb_academicDiscipline;
+        private System.Windows.Forms.Label lb_topic;
+        private System.Windows.Forms.TextBox tb_topic;
+        private System.Windows.Forms.Label lb_amountQuestions;
+        private System.Windows.Forms.TextBox tb_amountQuestions;
+        private System.Windows.Forms.TextBox tb_question;
+        private System.Windows.Forms.Label lb_questions;
+        private System.Windows.Forms.Label lb_answers;
+        private System.Windows.Forms.Button bt_addAnwer;
+        private System.Windows.Forms.Button bt_deleteAnswer;
+        private System.Windows.Forms.Button bt_editAnswer;
+        private System.Windows.Forms.Label lb_points;
+        private System.Windows.Forms.TextBox tb_points;
+        private System.Windows.Forms.CheckBox cb_defaultTest;
+        private System.Windows.Forms.CheckedListBox clb_answers;
+        private System.Windows.Forms.Label lb_pointForQuestion;
+        private System.Windows.Forms.TextBox tb_pointForQuestion;
+        private System.Windows.Forms.ToolStripMenuItem ms_exit;
     }
 }
 
