@@ -20,9 +20,9 @@ namespace Редактор_тестов
         public string AcademicDiscipline { get; set; }
         public string Topic { get; set; }
         public int AmountQuestions { get; set; }
-        public int MaxPoints { get; set; }
+        public double MaxPoints { get; set; }
         public bool DefaultTest { get; set; }
-        public int DefaultPoint { get; set; }
+        public double DefaultPoint { get; set; }
         public string newAnswer { get; set; }
 
         public List <QuestionModel> questions = new List<QuestionModel>();

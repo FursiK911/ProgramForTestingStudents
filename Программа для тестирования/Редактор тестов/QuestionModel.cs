@@ -11,12 +11,12 @@ namespace Редактор_тестов
         public QuestionModel()
         {
             question = "None";
-            PointForQuestion = 1;
+            PointForQuestion = 0;
             TrueAswers = 0;
             SaveQuestion = false;
         }
         public string question { get; set; }
-        public int PointForQuestion { get; set; }
+        public double PointForQuestion { get; set; }
         public int TrueAswers { get; set; }
         public bool SaveQuestion { get; set; }
         public Dictionary<string,bool> CloneAnswers()

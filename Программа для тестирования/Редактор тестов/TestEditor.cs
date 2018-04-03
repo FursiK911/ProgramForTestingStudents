@@ -20,6 +20,8 @@ namespace Редактор_тестов
             InitializeComponent();
             tmpQuestion.SaveQuestion = false;
             VisibleControlQuestions(false);
+            label10.Visible = false;
+            textBox6.Visible = false;
         }
 
 
@@ -109,6 +111,7 @@ namespace Редактор_тестов
             {
                 MessageBox.Show("'Новый ответ "+ checkedListBox1.Items.Count + "' уже существует");
             }
+            SaveData();
         }
 
         private void RemoveItem(object sender, EventArgs e)
@@ -118,6 +121,7 @@ namespace Редактор_тестов
                 tmpQuestion.answers.Remove(checkedListBox1.SelectedItem.ToString());
                 checkedListBox1.Items.RemoveAt(checkedListBox1.SelectedIndex);
             }
+            SaveData();
         }
 
         private void CheckCountQuestions(object sender, EventArgs e)
@@ -134,7 +138,8 @@ namespace Редактор_тестов
             }
             catch(FormatException)
             {
-
+                MessageBox.Show("Введены некорректные данные!");
+                textBox3.Text = "";
             }
         }
 
@@ -150,9 +155,17 @@ namespace Редактор_тестов
             button2.Visible = isVisible;
             button3.Visible = isVisible;
             button4.Visible = isVisible;
-            button5.Visible = isVisible;
-            button6.Visible = isVisible;
             button7.Visible = isVisible;
+            if (!test.DefaultTest)
+            {
+                label10.Visible = true;
+                textBox6.Visible = true;
+            }
+            else
+            {
+                label10.Visible = false;
+                textBox6.Visible = false;
+            }
         }
 
         private void CheckDiscipline(object sender, EventArgs e)
@@ -195,11 +208,6 @@ namespace Редактор_тестов
             }
         }
 
-        private void ClickSave(object sender, EventArgs e)
-        {
-            SaveData();
-        }
-
         private void OpenQuestionEditor(object sender, EventArgs e)//Переделать
         {
             SaveData();
@@ -213,7 +221,7 @@ namespace Редактор_тестов
             }
             catch
             {
-                MessageBox.Show("Выберите элемент");
+                MessageBox.Show("Выберите элемент!");
             }
 
             PrintQuestion(index);
@@ -222,16 +230,54 @@ namespace Редактор_тестов
 
         private void TestModelMode(object sender, EventArgs e)
         {
-
             if (checkBox1.Checked)
             {
+                label10.Visible = true;
+                textBox6.Visible = true;
+                textBox5.Text = "";
                 test.DefaultTest = false;
                 label8.Text = "Балл за вопрос по умолчанию";
             }
             else
             {
+                label10.Visible = false;
+                textBox6.Visible = false;
+                textBox5.Text = "";
                 test.DefaultTest = true;
                 label8.Text = "Максимальное количество баллов";
+            }
+        }
+
+        private void setDefaultPointForQuestion(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!test.DefaultTest)
+                {
+                    test.DefaultPoint = double.Parse(textBox5.Text);
+                }
+                else
+                {
+                    test.DefaultPoint = test.MaxPoints / test.AmountQuestions;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void setPointForQuestion(object sender, EventArgs e)
+        {
+            try
+            {
+                if(textBox6.Text != null && textBox6.Text != "0")
+                    tmpQuestion.PointForQuestion = double.Parse(textBox6.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Введены некорректные данные!");
+                textBox6.Text = "";
             }
         }
     }

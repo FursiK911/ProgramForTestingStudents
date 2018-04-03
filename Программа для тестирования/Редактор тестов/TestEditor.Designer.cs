@@ -49,13 +49,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -222,7 +222,7 @@
             // 
             this.button3.Location = new System.Drawing.Point(457, 189);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(118, 39);
+            this.button3.Size = new System.Drawing.Size(254, 39);
             this.button3.TabIndex = 20;
             this.button3.Text = "Добавить вариант ответа";
             this.button3.UseVisualStyleBackColor = true;
@@ -232,36 +232,17 @@
             // 
             this.button4.Location = new System.Drawing.Point(457, 279);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(118, 39);
+            this.button4.Size = new System.Drawing.Size(255, 39);
             this.button4.TabIndex = 21;
             this.button4.Text = "Удалить вариант ответа";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.RemoveItem);
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(581, 189);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(118, 39);
-            this.button5.TabIndex = 22;
-            this.button5.Text = "Сохранить вопрос";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.ClickSave);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(581, 234);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(118, 39);
-            this.button6.TabIndex = 23;
-            this.button6.Text = "Удалить вопрос";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(457, 234);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(118, 39);
+            this.button7.Size = new System.Drawing.Size(255, 39);
             this.button7.TabIndex = 24;
             this.button7.Text = "Изменить вариант ответа";
             this.button7.UseVisualStyleBackColor = true;
@@ -282,6 +263,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(83, 20);
             this.textBox5.TabIndex = 25;
+            this.textBox5.TextChanged += new System.EventHandler(this.setDefaultPointForQuestion);
             // 
             // checkBox1
             // 
@@ -308,18 +290,35 @@
             this.checkedListBox1.Size = new System.Drawing.Size(439, 259);
             this.checkedListBox1.TabIndex = 28;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(457, 340);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(89, 13);
+            this.label10.TabIndex = 30;
+            this.label10.Text = "Балл за вопрос:";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(552, 337);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(131, 20);
+            this.textBox6.TabIndex = 31;
+            this.textBox6.TextChanged += new System.EventHandler(this.setPointForQuestion);
+            // 
             // TestEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(711, 459);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label7);
@@ -367,13 +366,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }
 
