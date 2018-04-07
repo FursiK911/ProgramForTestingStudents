@@ -16,7 +16,7 @@ namespace Редактор_тестов
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TestEditor());
+            Application.Run(new TestEditorForm());
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Редактор_тестов
 {
-    partial class TestEditor
+    partial class TestEditorForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -298,7 +298,6 @@
             this.clb_answers.ScrollAlwaysVisible = true;
             this.clb_answers.Size = new System.Drawing.Size(439, 259);
             this.clb_answers.TabIndex = 28;
-            this.clb_answers.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clb_answers_ItemCheck);
             // 
             // lb_pointForQuestion
             // 
@@ -317,7 +316,7 @@
             this.tb_pointForQuestion.TabIndex = 31;
             this.tb_pointForQuestion.TextChanged += new System.EventHandler(this.tb_pointForQuestion_TextChanged);
             // 
-            // TestEditor
+            // TestEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -345,7 +344,7 @@
             this.Controls.Add(this.bt_nextQuestion);
             this.Controls.Add(this.bt_previousQuestion);
             this.Controls.Add(this.menuStrip1);
-            this.Name = "TestEditor";
+            this.Name = "TestEditorForm";
             this.Text = "Редактор тестов";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

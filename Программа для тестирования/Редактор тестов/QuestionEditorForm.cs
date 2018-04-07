@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace Редактор_тестов
 {
-    public partial class QuestionEditor : Form
+    public partial class QuestionEditorForm : Form
     {
         TestModel test = new TestModel();
         int indexQuestion;
         string keyAnswer;
-        public QuestionEditor()
+        public QuestionEditorForm()
         {
             InitializeComponent();
         }
-        public QuestionEditor(TestModel test, int indexQuestion, string keyAnswer, bool trueAnswer)
+        public QuestionEditorForm(TestModel test, int indexQuestion, string keyAnswer, bool trueAnswer)
         {
             InitializeComponent();
             this.test = test;
@@ -41,7 +41,7 @@ namespace Редактор_тестов
 
         private void QuestionEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
-            test.newAnswer = textBox1.Text;
+            test.NewAnswer = textBox1.Text;
             test.questions[indexQuestion].answers.Add(textBox1.Text,checkBox1.Checked);
         }
     }

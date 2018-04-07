@@ -46,27 +46,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="QuestionEditor.cs">
+    <Compile Include="QuestionEditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QuestionEditor.Designer.cs">
-      <DependentUpon>QuestionEditor.cs</DependentUpon>
+    <Compile Include="QuestionEditorForm.Designer.cs">
+      <DependentUpon>QuestionEditorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="QuestionModel.cs" />
     <Compile Include="TestModel.cs" />
-    <Compile Include="TestEditor.cs">
+    <Compile Include="TestEditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TestEditor.Designer.cs">
-      <DependentUpon>TestEditor.cs</DependentUpon>
+    <Compile Include="TestEditorForm.Designer.cs">
+      <DependentUpon>TestEditorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="QuestionEditor.resx">
-      <DependentUpon>QuestionEditor.cs</DependentUpon>
+    <EmbeddedResource Include="QuestionEditorForm.resx">
+      <DependentUpon>QuestionEditorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TestEditor.resx">
-      <DependentUpon>TestEditor.cs</DependentUpon>
+    <EmbeddedResource Include="TestEditorForm.resx">
+      <DependentUpon>TestEditorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

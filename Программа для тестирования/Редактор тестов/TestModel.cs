@@ -12,6 +12,7 @@ namespace Редактор_тестов
         {
             AcademicDiscipline = "None";
             Topic = "None";
+            Path = "";
             AmountQuestions = 0;
             MaxPoints = 0;
             DefaultTest = true;
@@ -23,7 +24,8 @@ namespace Редактор_тестов
         public double MaxPoints { get; set; }
         public bool DefaultTest { get; set; }
         public double DefaultPoint { get; set; }
-        public string newAnswer { get; set; }
+        public string NewAnswer { get; set; }
+        public string Path { get; set; }
 
         public List <QuestionModel> questions = new List<QuestionModel>();
     }

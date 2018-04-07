@@ -1,6 +1,6 @@
 ﻿namespace Редактор_тестов
 {
-    partial class QuestionEditor
+    partial class QuestionEditorForm
     {
         /// <summary>
         /// Required designer variable.
@@ -59,7 +59,7 @@
             this.checkBox1.TabIndex = 4;
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // QuestionEditor
+            // QuestionEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -67,7 +67,7 @@
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Name = "QuestionEditor";
+            this.Name = "QuestionEditorForm";
             this.Text = "Редактор вопроса";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuestionEditor_FormClosing);
             this.ResumeLayout(false);
