@@ -12,6 +12,8 @@ using System.Runtime.Serialization.Json;
 
 namespace Редактор_тестов
 {
+    // TODO: Исправить баг с редактированием кл-ва вопросов
+    // TODO: Исправить Anchor-ы на textBox-aх
     public partial class TestEditorForm : Form
     {
         TestModel test = new TestModel();
@@ -161,9 +163,15 @@ namespace Редактор_тестов
                 SaveData();
                 DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
                 SaveFileDialog spd = new SaveFileDialog();
+
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\Tests\\";
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+                spd.InitialDirectory = path;
+
                 if (spd.ShowDialog() == DialogResult.OK)
                 {
-                    using (FileStream fs = new FileStream(spd.FileName + ".json", FileMode.Create))
+                    using (FileStream fs = new FileStream((spd.FileName.IndexOf(".test") > -1) ? spd.FileName : spd.FileName + ".test" , FileMode.Create))
                     {
                         jsonFormatter.WriteObject(fs, test);
                     }
@@ -270,14 +278,19 @@ namespace Редактор_тестов
         {
             try
             {
-                clb_answers.Items.Add("Новый ответ " + clb_answers.Items.Count);
-                tmpQuestion.answers.Add(clb_answers.Items[clb_answers.Items.Count - 1].ToString(), false);
+                string tmpAnswer = "Новый ответ " + clb_answers.Items.Count;
+                bool tmpCheckState = false;
+                clb_answers.Items.Add(tmpAnswer);
+                SaveData();
+                clb_answers.SelectedIndex = clb_answers.Items.Count - 1;
+                QuestionEditorForm edit = new QuestionEditorForm(test, index, tmpAnswer, tmpCheckState);
+                edit.ShowDialog();
             }
             catch
             {
-                MessageBox.Show("'Новый ответ " + clb_answers.Items.Count + "' уже существует");
+                MessageBox.Show("Такой ответ уже существует!");
             }
-            SaveData();
+            PrintQuestion();
         }
 
         private void bt_editAnswer_Click(object sender, EventArgs e)
@@ -412,7 +425,9 @@ namespace Редактор_тестов
             string path;
             if (test.Path == "")
             {
-                path = test.AcademicDiscipline + "." + test.Topic + ".test";
+                path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                path += "\\Tests\\" + test.AcademicDiscipline + "." + test.Topic + ".test";
+                Directory.CreateDirectory(path);
                 test.Path = path;
             }
             else
@@ -429,9 +444,15 @@ namespace Редактор_тестов
             SaveData();
             DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
             SaveFileDialog spd = new SaveFileDialog();
+
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\Tests\\";
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            spd.InitialDirectory = path;
+
             if (spd.ShowDialog() == DialogResult.OK)
             {
-                using (FileStream fs = new FileStream(spd.FileName + ".test", FileMode.Create))
+                using (FileStream fs = new FileStream((spd.FileName.IndexOf(".test") > -1) ? spd.FileName : spd.FileName + ".test", FileMode.Create))
                 {
                     jsonFormatter.WriteObject(fs, test);
                 }
@@ -439,8 +460,7 @@ namespace Редактор_тестов
         }
 
         private void ms_exit_Click(object sender, EventArgs e)
-        {
-            Exit();
-        }
+         => Exit();
+
     }
 }

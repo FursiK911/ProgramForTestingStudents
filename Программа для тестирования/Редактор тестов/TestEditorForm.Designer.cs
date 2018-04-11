@@ -28,17 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestEditorForm));
             this.bt_previousQuestion = new System.Windows.Forms.Button();
             this.bt_nextQuestion = new System.Windows.Forms.Button();
             this.lb_previousQuestion = new System.Windows.Forms.Label();
             this.lb_nextQuestion = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ms_create = new System.Windows.Forms.ToolStripMenuItem();
-            this.ms_open = new System.Windows.Forms.ToolStripMenuItem();
-            this.ms_save = new System.Windows.Forms.ToolStripMenuItem();
-            this.ms_saveAs = new System.Windows.Forms.ToolStripMenuItem();
-            this.ms_help = new System.Windows.Forms.ToolStripMenuItem();
-            this.ms_exit = new System.Windows.Forms.ToolStripMenuItem();
             this.tb_academicDiscipline = new System.Windows.Forms.TextBox();
             this.lb_academicDiscipline = new System.Windows.Forms.Label();
             this.lb_topic = new System.Windows.Forms.Label();
@@ -57,11 +51,20 @@
             this.clb_answers = new System.Windows.Forms.CheckedListBox();
             this.lb_pointForQuestion = new System.Windows.Forms.Label();
             this.tb_pointForQuestion = new System.Windows.Forms.TextBox();
-            this.menuStrip1.SuspendLayout();
+            this.ts_manageTest = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsb_create = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.ts_manageTest.SuspendLayout();
             this.SuspendLayout();
             // 
             // bt_previousQuestion
             // 
+            this.bt_previousQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_previousQuestion.Location = new System.Drawing.Point(457, 390);
             this.bt_previousQuestion.Name = "bt_previousQuestion";
             this.bt_previousQuestion.Size = new System.Drawing.Size(118, 57);
@@ -72,6 +75,7 @@
             // 
             // bt_nextQuestion
             // 
+            this.bt_nextQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_nextQuestion.Location = new System.Drawing.Point(581, 390);
             this.bt_nextQuestion.Name = "bt_nextQuestion";
             this.bt_nextQuestion.Size = new System.Drawing.Size(118, 57);
@@ -82,6 +86,7 @@
             // 
             // lb_previousQuestion
             // 
+            this.lb_previousQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_previousQuestion.AutoSize = true;
             this.lb_previousQuestion.Location = new System.Drawing.Point(454, 374);
             this.lb_previousQuestion.Name = "lb_previousQuestion";
@@ -91,6 +96,7 @@
             // 
             // lb_nextQuestion
             // 
+            this.lb_nextQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_nextQuestion.AutoSize = true;
             this.lb_nextQuestion.Location = new System.Drawing.Point(578, 374);
             this.lb_nextQuestion.Name = "lb_nextQuestion";
@@ -98,65 +104,12 @@
             this.lb_nextQuestion.TabIndex = 4;
             this.lb_nextQuestion.Text = "Следующий вопрос";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ms_create,
-            this.ms_open,
-            this.ms_save,
-            this.ms_saveAs,
-            this.ms_help,
-            this.ms_exit});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(711, 24);
-            this.menuStrip1.TabIndex = 5;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // ms_create
-            // 
-            this.ms_create.Name = "ms_create";
-            this.ms_create.Size = new System.Drawing.Size(62, 20);
-            this.ms_create.Text = "Создать";
-            this.ms_create.Click += new System.EventHandler(this.ms_create_Click);
-            // 
-            // ms_open
-            // 
-            this.ms_open.Name = "ms_open";
-            this.ms_open.Size = new System.Drawing.Size(75, 20);
-            this.ms_open.Text = "Открыть...";
-            this.ms_open.Click += new System.EventHandler(this.ms_open_Click);
-            // 
-            // ms_save
-            // 
-            this.ms_save.Name = "ms_save";
-            this.ms_save.Size = new System.Drawing.Size(77, 20);
-            this.ms_save.Text = "Сохранить";
-            this.ms_save.Click += new System.EventHandler(this.ms_save_Click);
-            // 
-            // ms_saveAs
-            // 
-            this.ms_saveAs.Name = "ms_saveAs";
-            this.ms_saveAs.Size = new System.Drawing.Size(107, 20);
-            this.ms_saveAs.Text = "Сохранить как...";
-            this.ms_saveAs.Click += new System.EventHandler(this.ms_saveAs_Click);
-            // 
-            // ms_help
-            // 
-            this.ms_help.Name = "ms_help";
-            this.ms_help.Size = new System.Drawing.Size(68, 20);
-            this.ms_help.Text = "Помощь";
-            // 
-            // ms_exit
-            // 
-            this.ms_exit.Name = "ms_exit";
-            this.ms_exit.Size = new System.Drawing.Size(53, 20);
-            this.ms_exit.Text = "Выход";
-            this.ms_exit.Click += new System.EventHandler(this.ms_exit_Click);
-            // 
             // tb_academicDiscipline
             // 
+            this.tb_academicDiscipline.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_academicDiscipline.Location = new System.Drawing.Point(12, 47);
+            this.tb_academicDiscipline.MaximumSize = new System.Drawing.Size(200, 20);
             this.tb_academicDiscipline.Name = "tb_academicDiscipline";
             this.tb_academicDiscipline.Size = new System.Drawing.Size(162, 20);
             this.tb_academicDiscipline.TabIndex = 6;
@@ -173,6 +126,7 @@
             // 
             // lb_topic
             // 
+            this.lb_topic.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lb_topic.AutoSize = true;
             this.lb_topic.Location = new System.Drawing.Point(194, 31);
             this.lb_topic.Name = "lb_topic";
@@ -182,7 +136,9 @@
             // 
             // tb_topic
             // 
+            this.tb_topic.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tb_topic.Location = new System.Drawing.Point(197, 47);
+            this.tb_topic.MaximumSize = new System.Drawing.Size(220, 20);
             this.tb_topic.Name = "tb_topic";
             this.tb_topic.Size = new System.Drawing.Size(192, 20);
             this.tb_topic.TabIndex = 8;
@@ -190,6 +146,7 @@
             // 
             // lb_amountQuestions
             // 
+            this.lb_amountQuestions.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lb_amountQuestions.AutoSize = true;
             this.lb_amountQuestions.Location = new System.Drawing.Point(406, 31);
             this.lb_amountQuestions.Name = "lb_amountQuestions";
@@ -199,6 +156,7 @@
             // 
             // tb_amountQuestions
             // 
+            this.tb_amountQuestions.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tb_amountQuestions.Location = new System.Drawing.Point(409, 47);
             this.tb_amountQuestions.Name = "tb_amountQuestions";
             this.tb_amountQuestions.Size = new System.Drawing.Size(68, 20);
@@ -207,6 +165,8 @@
             // 
             // tb_question
             // 
+            this.tb_question.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_question.Location = new System.Drawing.Point(12, 106);
             this.tb_question.Multiline = true;
             this.tb_question.Name = "tb_question";
@@ -215,6 +175,8 @@
             // 
             // lb_questions
             // 
+            this.lb_questions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_questions.AutoSize = true;
             this.lb_questions.Location = new System.Drawing.Point(9, 90);
             this.lb_questions.Name = "lb_questions";
@@ -224,6 +186,8 @@
             // 
             // lb_answers
             // 
+            this.lb_answers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_answers.AutoSize = true;
             this.lb_answers.Location = new System.Drawing.Point(9, 173);
             this.lb_answers.Name = "lb_answers";
@@ -233,7 +197,10 @@
             // 
             // bt_addAnwer
             // 
+            this.bt_addAnwer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_addAnwer.Location = new System.Drawing.Point(457, 189);
+            this.bt_addAnwer.MaximumSize = new System.Drawing.Size(254, 39);
+            this.bt_addAnwer.MinimumSize = new System.Drawing.Size(254, 39);
             this.bt_addAnwer.Name = "bt_addAnwer";
             this.bt_addAnwer.Size = new System.Drawing.Size(254, 39);
             this.bt_addAnwer.TabIndex = 20;
@@ -243,9 +210,12 @@
             // 
             // bt_deleteAnswer
             // 
+            this.bt_deleteAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_deleteAnswer.Location = new System.Drawing.Point(457, 279);
+            this.bt_deleteAnswer.MaximumSize = new System.Drawing.Size(254, 39);
+            this.bt_deleteAnswer.MinimumSize = new System.Drawing.Size(254, 39);
             this.bt_deleteAnswer.Name = "bt_deleteAnswer";
-            this.bt_deleteAnswer.Size = new System.Drawing.Size(255, 39);
+            this.bt_deleteAnswer.Size = new System.Drawing.Size(254, 39);
             this.bt_deleteAnswer.TabIndex = 21;
             this.bt_deleteAnswer.Text = "Удалить вариант ответа";
             this.bt_deleteAnswer.UseVisualStyleBackColor = true;
@@ -253,9 +223,12 @@
             // 
             // bt_editAnswer
             // 
+            this.bt_editAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_editAnswer.Location = new System.Drawing.Point(457, 234);
+            this.bt_editAnswer.MaximumSize = new System.Drawing.Size(254, 39);
+            this.bt_editAnswer.MinimumSize = new System.Drawing.Size(254, 39);
             this.bt_editAnswer.Name = "bt_editAnswer";
-            this.bt_editAnswer.Size = new System.Drawing.Size(255, 39);
+            this.bt_editAnswer.Size = new System.Drawing.Size(254, 39);
             this.bt_editAnswer.TabIndex = 24;
             this.bt_editAnswer.Text = "Изменить вариант ответа";
             this.bt_editAnswer.UseVisualStyleBackColor = true;
@@ -263,6 +236,7 @@
             // 
             // lb_points
             // 
+            this.lb_points.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_points.AutoSize = true;
             this.lb_points.Location = new System.Drawing.Point(499, 31);
             this.lb_points.Name = "lb_points";
@@ -272,6 +246,7 @@
             // 
             // tb_points
             // 
+            this.tb_points.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_points.Location = new System.Drawing.Point(502, 47);
             this.tb_points.Name = "tb_points";
             this.tb_points.Size = new System.Drawing.Size(83, 20);
@@ -280,6 +255,7 @@
             // 
             // cb_defaultTest
             // 
+            this.cb_defaultTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cb_defaultTest.AutoSize = true;
             this.cb_defaultTest.Location = new System.Drawing.Point(591, 47);
             this.cb_defaultTest.Name = "cb_defaultTest";
@@ -292,6 +268,8 @@
             // 
             // clb_answers
             // 
+            this.clb_answers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.clb_answers.FormattingEnabled = true;
             this.clb_answers.Location = new System.Drawing.Point(12, 189);
             this.clb_answers.Name = "clb_answers";
@@ -301,6 +279,7 @@
             // 
             // lb_pointForQuestion
             // 
+            this.lb_pointForQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_pointForQuestion.AutoSize = true;
             this.lb_pointForQuestion.Location = new System.Drawing.Point(457, 340);
             this.lb_pointForQuestion.Name = "lb_pointForQuestion";
@@ -310,17 +289,92 @@
             // 
             // tb_pointForQuestion
             // 
+            this.tb_pointForQuestion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_pointForQuestion.Location = new System.Drawing.Point(552, 337);
             this.tb_pointForQuestion.Name = "tb_pointForQuestion";
             this.tb_pointForQuestion.Size = new System.Drawing.Size(131, 20);
             this.tb_pointForQuestion.TabIndex = 31;
             this.tb_pointForQuestion.TextChanged += new System.EventHandler(this.tb_pointForQuestion_TextChanged);
             // 
+            // ts_manageTest
+            // 
+            this.ts_manageTest.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.ts_manageTest.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsb_create,
+            this.toolStripSeparator1,
+            this.toolStripButton2,
+            this.toolStripButton3,
+            this.toolStripSeparator2,
+            this.toolStripButton5,
+            this.toolStripButton6});
+            this.ts_manageTest.Location = new System.Drawing.Point(0, 0);
+            this.ts_manageTest.Name = "ts_manageTest";
+            this.ts_manageTest.Size = new System.Drawing.Size(711, 25);
+            this.ts_manageTest.TabIndex = 32;
+            this.ts_manageTest.Text = "toolStrip1";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsb_create
+            // 
+            this.tsb_create.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsb_create.Image = global::Редактор_тестов.Properties.Resources.UI_Icons_Outline_05_512;
+            this.tsb_create.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsb_create.Name = "tsb_create";
+            this.tsb_create.Size = new System.Drawing.Size(23, 22);
+            this.tsb_create.Text = "Открыть";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::Редактор_тестов.Properties.Resources.open_folder_with_document_318_48982;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = global::Редактор_тестов.Properties.Resources.save_button_icon_73092;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "toolStripButton3";
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton5.Image = global::Редактор_тестов.Properties.Resources.help;
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton5.Text = "toolStripButton5";
+            // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton6.Image = global::Редактор_тестов.Properties.Resources.exit;
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton6.Text = "toolStripButton6";
+            // 
             // TestEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(711, 459);
+            this.Controls.Add(this.ts_manageTest);
             this.Controls.Add(this.tb_pointForQuestion);
             this.Controls.Add(this.lb_pointForQuestion);
             this.Controls.Add(this.clb_answers);
@@ -343,11 +397,12 @@
             this.Controls.Add(this.lb_previousQuestion);
             this.Controls.Add(this.bt_nextQuestion);
             this.Controls.Add(this.bt_previousQuestion);
-            this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(727, 497);
             this.Name = "TestEditorForm";
             this.Text = "Редактор тестов";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.ts_manageTest.ResumeLayout(false);
+            this.ts_manageTest.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -358,12 +413,6 @@
         private System.Windows.Forms.Button bt_nextQuestion;
         private System.Windows.Forms.Label lb_previousQuestion;
         private System.Windows.Forms.Label lb_nextQuestion;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem ms_create;
-        private System.Windows.Forms.ToolStripMenuItem ms_open;
-        private System.Windows.Forms.ToolStripMenuItem ms_save;
-        private System.Windows.Forms.ToolStripMenuItem ms_saveAs;
-        private System.Windows.Forms.ToolStripMenuItem ms_help;
         private System.Windows.Forms.TextBox tb_academicDiscipline;
         private System.Windows.Forms.Label lb_academicDiscipline;
         private System.Windows.Forms.Label lb_topic;
@@ -382,7 +431,14 @@
         private System.Windows.Forms.CheckedListBox clb_answers;
         private System.Windows.Forms.Label lb_pointForQuestion;
         private System.Windows.Forms.TextBox tb_pointForQuestion;
-        private System.Windows.Forms.ToolStripMenuItem ms_exit;
+        private System.Windows.Forms.ToolStrip ts_manageTest;
+        private System.Windows.Forms.ToolStripButton tsb_create;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton toolStripButton6;
     }
 }
 

@@ -30,7 +30,6 @@
         {
             this.tb_question = new System.Windows.Forms.TextBox();
             this.lb_question = new System.Windows.Forms.Label();
-            this.lb_time = new System.Windows.Forms.Label();
             this.lb_answers = new System.Windows.Forms.Label();
             this.clb_answers = new System.Windows.Forms.CheckedListBox();
             this.lbox_question = new System.Windows.Forms.ListBox();
@@ -58,15 +57,6 @@
             this.lb_question.Size = new System.Drawing.Size(44, 13);
             this.lb_question.TabIndex = 1;
             this.lb_question.Text = "Вопрос";
-            // 
-            // lb_time
-            // 
-            this.lb_time.AutoSize = true;
-            this.lb_time.Location = new System.Drawing.Point(537, 9);
-            this.lb_time.Name = "lb_time";
-            this.lb_time.Size = new System.Drawing.Size(40, 13);
-            this.lb_time.TabIndex = 2;
-            this.lb_time.Text = "Время";
             // 
             // lb_answers
             // 
@@ -132,6 +122,7 @@
             this.bt_finish.TabIndex = 9;
             this.bt_finish.Text = "Завершить тест";
             this.bt_finish.UseVisualStyleBackColor = true;
+            this.bt_finish.Click += new System.EventHandler(this.bt_finish_Click);
             // 
             // PassageOfTestingForm
             // 
@@ -145,7 +136,6 @@
             this.Controls.Add(this.lbox_question);
             this.Controls.Add(this.clb_answers);
             this.Controls.Add(this.lb_answers);
-            this.Controls.Add(this.lb_time);
             this.Controls.Add(this.lb_question);
             this.Controls.Add(this.tb_question);
             this.Name = "PassageOfTestingForm";
@@ -159,7 +149,6 @@
 
         private System.Windows.Forms.TextBox tb_question;
         private System.Windows.Forms.Label lb_question;
-        private System.Windows.Forms.Label lb_time;
         private System.Windows.Forms.Label lb_answers;
         private System.Windows.Forms.CheckedListBox clb_answers;
         private System.Windows.Forms.ListBox lbox_question;

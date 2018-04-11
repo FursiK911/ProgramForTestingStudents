@@ -13,6 +13,10 @@ namespace Программа_для_тестирования
 {
     public partial class PassageOfTestingForm : Form
     {
+        private TestModel _testModel;
+
+        public TestModel TestModel;
+
         TestModel test;
         Participant participant;
         QuestionModel tmpQuestion = new QuestionModel();
@@ -27,16 +31,22 @@ namespace Программа_для_тестирования
             InitializeComponent();
             test = t;
             participant = p;
-            PrintQuestion();
-            for (int i = 0; i < test.questions.Count; i++)
-                lbox_question.Items.Add("Вопрос " + (i+1));
+            FillListBox();
         }
 
-        private void PrintQuestion()
+        private void FillListBox()
+        {
+            for (int i = 0; i < test.questions.Count; i++)
+                lbox_question.Items.Add("Вопрос " + (i + 1));
+            lbox_question.SelectedIndex = index;
+        }
+
+        private void WriteQuestion()
         {
             lb_question.Text = "Вопрос " + (index + 1);
             tb_question.Text = test.questions[index].question;
-            if (test.questions[index].PointForQuestion != 0)
+
+            if (!test.DefaultTest)//test.questions[index].PointForQuestion != 0)
                 lb_pointForAnswer.Text = test.questions[index].PointForQuestion.ToString();
             else
                 lb_pointForAnswer.Text = test.DefaultPoint.ToString();
@@ -58,12 +68,10 @@ namespace Программа_для_тестирования
                     {
                         clb_answers.Items.Add(s);
                     }
-                    for (int i = 0; i < clb_answers.Items.Count; i++)
+                    int i = 0;
+                    foreach (bool value in participant.questions[index].answers.Values)
                     {
-                        foreach (bool value in participant.questions[index].answers.Values)
-                        {
-                            clb_answers.SetItemChecked(i,value);
-                        }
+                        clb_answers.SetItemChecked(i++, value);
                     }
                 }
             }
@@ -111,24 +119,23 @@ namespace Программа_для_тестирования
             {
                 if (!participant.questions[index].SaveQuestion)
                 {
-                    tmpQuestion.answers = test.questions[index].answers;
+                    tmpQuestion.answers = test.questions[index].CloneAnswers();
                     tmpQuestion.TrueAswers = test.questions[index].TrueAswers;
                 }
                 else
                 {
-                    tmpQuestion.answers = participant.questions[index].answers;
+                    tmpQuestion.answers = participant.questions[index].CloneAnswers();
                     tmpQuestion.TrueAswers = participant.questions[index].TrueAswers;
                 }
             }
             catch
             {
-                tmpQuestion.answers = test.questions[index].answers;
+                tmpQuestion.answers = test.questions[index].CloneAnswers();
                 tmpQuestion.TrueAswers = test.questions[index].TrueAswers;
             }
             finally
             {
                 tmpQuestion.SaveQuestion = true;
-                PrintQuestion();
             }
         }
 
@@ -138,8 +145,9 @@ namespace Программа_для_тестирования
             {
                 SaveResults();
                 index--;
-                lbox_question.SelectedIndex = index;
                 DataInQuestion();
+                lbox_question.SelectedIndex = index;
+
             }
         }
 
@@ -149,15 +157,56 @@ namespace Программа_для_тестирования
             {
                 SaveResults();
                 index++;
-                lbox_question.SelectedIndex = index;
                 DataInQuestion();
+                lbox_question.SelectedIndex = index;
             }
         }
 
         private void lbox_question_SelectedIndexChanged(object sender, EventArgs e)
         {
             index = lbox_question.SelectedIndex;
-            PrintQuestion();
+            WriteQuestion();
+        }
+
+        private void bt_finish_Click(object sender, EventArgs e)
+        {
+            SaveResults();
+            for (int i = 0; i < participant.questions.Count; i++)
+            {
+                participant.questions[i].TrueAswers = 0;
+                foreach (string key in participant.questions[i].answers.Keys)
+                {
+                    if (participant.questions[i].answers[key] == test.questions[i].answers[key] && test.questions[i].answers[key] == true)
+                        participant.questions[i].TrueAswers++;
+                    else if (participant.questions[i].answers[key] == true && test.questions[i].answers[key] == false)
+                        participant.questions[i].TrueAswers--;
+                }
+            }
+
+            participant.Points = 0;
+            for (int i = 0; i < participant.questions.Count; i++)
+            {
+                if (participant.questions[i].TrueAswers > test.questions[i].TrueAswers || participant.questions[i].TrueAswers <= 0)
+                    continue;
+
+                else if (test.questions[i].TrueAswers == participant.questions[i].TrueAswers)
+                {
+                    if (!test.DefaultTest)
+                        participant.Points += test.questions[i].PointForQuestion;
+                    else
+                        participant.Points += test.DefaultPoint;
+                }
+
+                else
+                {
+                    if (!test.DefaultTest)
+                        participant.Points += (test.questions[i].PointForQuestion / test.questions[i].TrueAswers) * participant.questions[i].TrueAswers;
+                    else
+                        participant.Points += (test.DefaultPoint / test.questions[i].TrueAswers) * participant.questions[i].TrueAswers;
+                }
+            }
+
+            MessageBox.Show("Ваши баллы: " + participant.Points.ToString());
         }
     }
 }

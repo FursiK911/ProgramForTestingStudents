@@ -17,8 +17,7 @@ namespace Программа_для_тестирования
         public string Specialty { get; set; }
         public int Course { get; set; }
         public string Group { get; set; }
-        public int Points { get; set; }
-        public TimeSpan time { get; set; }
+        public double Points { get; set; }
 
         public List<QuestionModel> questions = new List<QuestionModel>();
     }

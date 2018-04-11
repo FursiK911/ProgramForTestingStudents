@@ -19,6 +19,7 @@ namespace Редактор_тестов
         {
             InitializeComponent();
         }
+
         public QuestionEditorForm(TestModel test, int indexQuestion, string keyAnswer, bool trueAnswer)
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace Редактор_тестов
                 checkBox1.Checked = test.questions[indexQuestion].answers[keyAnswer];
                 test.questions[indexQuestion].answers.Remove(keyAnswer);
             }
-            catch(ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("Ошибка индекса выделенного ответа!");
                 this.Close();
@@ -41,7 +42,6 @@ namespace Редактор_тестов
 
         private void QuestionEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
-            test.NewAnswer = textBox1.Text;
             test.questions[indexQuestion].answers.Add(textBox1.Text,checkBox1.Checked);
         }
     }

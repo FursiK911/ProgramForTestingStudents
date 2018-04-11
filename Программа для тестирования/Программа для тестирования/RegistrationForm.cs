@@ -25,32 +25,39 @@ namespace Программа_для_тестирования
 
         private void Registration_Load(object sender, EventArgs e)
         {
-            string[] nameFiles = Directory.GetFiles(@"D:\Учеба\C#\Курсовая\Программа для тестирования\Программа для тестирования\tests");
-            foreach (string file in nameFiles)
-            {
-                FileStream fs = new FileStream(file, FileMode.Open);
-                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
-                test.Add((TestModel)jsonFormatter.ReadObject(fs));
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\Tests\\";
 
-                bool inList = false;
-                for (int i = 0; i < cb_discipline.Items.Count; i++)
+            if (Directory.Exists(path))
+            {
+                string[] nameFiles = Directory.GetFiles(path);
+                foreach (string file in nameFiles)
                 {
-                    if (test[index].AcademicDiscipline == cb_discipline.Items[i].ToString())
+                    FileStream fs = new FileStream(file, FileMode.Open);
+                    DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
+                    test.Add((TestModel)jsonFormatter.ReadObject(fs));
+
+                    bool inList = false;
+                    for (int i = 0; i < cb_discipline.Items.Count; i++)
                     {
-                        inList = true;
-                        break;
+                        if (test[index].AcademicDiscipline == cb_discipline.Items[i].ToString())
+                        {
+                            inList = true;
+                            break;
+                        }
                     }
+                    if (!inList)
+                        cb_discipline.Items.Add(test[index].AcademicDiscipline);
+                    index++;
                 }
-                if (!inList)
-                    cb_discipline.Items.Add(test[index].AcademicDiscipline);
-                index++;
+            }
+            else
+            {
+                MessageBox.Show("Указанного пути не существует!\n" + path);
             }
         }
 
         private void bt_cancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+            => this.Close();
 
         private void cb_discipline_SelectedIndexChanged(object sender, EventArgs e)
         {
