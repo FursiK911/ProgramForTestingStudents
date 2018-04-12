@@ -9,3 +9,12 @@ D:\Учеба\C#\Курсовая\Программа для тестирован
 D:\Учеба\C#\Курсовая\Программа для тестирования\Редактор тестов\obj\Debug\Редактор_тестов.QuestionEditorForm.resources
 D:\Учеба\C#\Курсовая\Программа для тестирования\Редактор тестов\obj\Debug\Редактор_тестов.TestEditorForm.resources
 D:\Учеба\C#\Курсовая\Программа для тестирования\Редактор тестов\bin\Debug\Test_Editor.exe.config
+D:\Учеба\C#\Курсовая\Program For Testing\Test_Editor\bin\Debug\Test_Editor.exe.config
+D:\Учеба\C#\Курсовая\Program For Testing\Test_Editor\bin\Debug\Test_Editor.exe
+D:\Учеба\C#\Курсовая\Program For Testing\Test_Editor\bin\Debug\Test_Editor.pdb
+D:\Учеба\C#\Курсовая\Program For Testing\Test_Editor\obj\Debug\TestEditor.QuestionEditorForm.resources
+D:\Учеба\C#\Курсовая\Program For Testing\Test_Editor\obj\Debug\TestEditor.TestEditorForm.resources
+D:\Учеба\C#\Курсовая\Program For Testing\Test_Editor\obj\Debug\Test_Editor.Properties.Resources.resources
+D:\Учеба\C#\Курсовая\Program For Testing\Test_Editor\obj\Debug\TestEditor.csproj.GenerateResource.Cache
+D:\Учеба\C#\Курсовая\Program For Testing\Test_Editor\obj\Debug\Test_Editor.exe
+D:\Учеба\C#\Курсовая\Program For Testing\Test_Editor\obj\Debug\Test_Editor.pdb

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Test_Editor;
+using TestEditor;
 using System.IO;
 using System.Runtime.Serialization.Json;
 
@@ -78,10 +78,10 @@ namespace Program_For_Testing
         {
             //if (tb_fullName.Text != "" && tb_specialty.Text != "" && tb_course.Text != "" && tb_group.Text != "" && cb_topic.SelectedItem != null)
             //{
-            //    p.FullName = tb_fullName.Text;
-            //    p.Specialty = tb_specialty.Text;
-            //    p.Course = int.Parse(tb_course.Text);
-            //    p.Group = tb_group.Text;
+            p.FullName = tb_fullName.Text;
+            p.Specialty = tb_specialty.Text;
+            p.Course = int.Parse(tb_course.Text);
+            p.Group = tb_group.Text;
             this.Hide();
             PassageOfTestingForm testingForm = new PassageOfTestingForm(test[index], p);
             testingForm.ShowDialog();

@@ -14,3 +14,16 @@ D:\Учеба\C#\Курсовая\Программа для тестирован
 D:\Учеба\C#\Курсовая\Программа для тестирования\Program_For_Testing\obj\Debug\ProgramForTesting.csproj.ResolveComReference.cache
 D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Debug\Program_For_Testing.exe.config
 D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Debug\ProgramForTesting.csproj.ResolveComReference.cache
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Debug\ProgramForTesting.csprojResolveAssemblyReference.cache
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Debug\Program_For_Testing.PassageOfTestingForm.resources
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Debug\Program_For_Testing.RegistrationForm.resources
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Debug\Program_For_Testing.Properties.Resources.resources
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Debug\ProgramForTesting.csproj.GenerateResource.Cache
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Debug\Program_For_Testing.exe
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Debug\Program_For_Testing.pdb
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Debug\Test_Editor.exe
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Debug\Test_Editor.pdb
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Debug\Program_For_Testing.exe
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Debug\Program_For_Testing.pdb
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Debug\Program_For_Testing.exe.CodeAnalysisLog.xml
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Debug\Program_For_Testing.exe.lastcodeanalysissucceeded

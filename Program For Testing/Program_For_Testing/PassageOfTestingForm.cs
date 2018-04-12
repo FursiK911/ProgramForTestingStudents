@@ -7,21 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Test_Editor;
 using System.Runtime.InteropServices;
-using Microsoft.Office.Interop.Excel;
+using Excel = Microsoft.Office.Interop.Excel;
+using TestEditor;
 
 namespace Program_For_Testing
 {
     public partial class PassageOfTestingForm : Form
     {
-        private TestModel _testModel;
-
-        public TestModel TestModel;
-
-        TestModel test;
+        TestModel _test;
         Participant participant;
         QuestionModel tmpQuestion = new QuestionModel();
+        ExSave _exSave;
         int index = 0;
         public PassageOfTestingForm()
         {
@@ -31,27 +28,31 @@ namespace Program_For_Testing
         public PassageOfTestingForm(TestModel t, Participant p)
         {
             InitializeComponent();
-            test = t;
+            _test = t;
             participant = p;
+            _exSave = new ExSave(p);
             FillListBox();
         }
 
-        private void FillListBox()
+        private void FillListBox() 
         {
-            for (int i = 0; i < test.questions.Count; i++)
+            for (int i = 0; i < _test.questions.Count; i++)
                 lbox_question.Items.Add("Вопрос " + (i + 1));
             lbox_question.SelectedIndex = index;
         }
 
+        /// <summary>
+        /// Вывод текущего Question на форму
+        /// </summary>
         private void WriteQuestion()
         {
             lb_question.Text = "Вопрос " + (index + 1);
-            tb_question.Text = test.questions[index].question;
+            tb_question.Text = _test.questions[index].question;
 
-            if (!test.DefaultTest)//test.questions[index].PointForQuestion != 0)
-                lb_pointForAnswer.Text = test.questions[index].PointForQuestion.ToString();
+            if (!_test.DefaultTest)
+                lb_pointForAnswer.Text = "Баллов за вопрос: " + _test.questions[index].PointForQuestion.ToString();
             else
-                lb_pointForAnswer.Text = test.DefaultPoint.ToString();
+                lb_pointForAnswer.Text = _test.DefaultPoint.ToString();
 
 
             clb_answers.Items.Clear();
@@ -59,7 +60,7 @@ namespace Program_For_Testing
             {
                 if (!participant.questions[index].SaveQuestion)
                 {
-                    foreach (string s in test.questions[index].answers.Keys)
+                    foreach (string s in _test.questions[index].answers.Keys)
                     {
                         clb_answers.Items.Add(s);
                     }
@@ -79,19 +80,21 @@ namespace Program_For_Testing
             }
             catch
             {
-                foreach (string s in test.questions[index].answers.Keys)
+                foreach (string s in _test.questions[index].answers.Keys)
                 {
                     clb_answers.Items.Add(s);
                 }
             }
         }
-
+        /// <summary>
+        /// Сохранение текущего Question в List Question
+        /// </summary>
         private void SaveResults()
         {
             tmpQuestion.answers.Clear();
             for (int i = 0; i < clb_answers.Items.Count; i++)
             {
-                tmpQuestion.answers.Add(clb_answers.Items[i].ToString(),clb_answers.GetItemChecked(i));
+                tmpQuestion.answers.Add(clb_answers.Items[i].ToString(), clb_answers.GetItemChecked(i));
             }
             try
             {
@@ -113,6 +116,9 @@ namespace Program_For_Testing
             }
         }
 
+        /// <summary>
+        /// Вывод из List Question в текущий Question
+        /// </summary>
         private void DataInQuestion()
         {
             tmpQuestion.answers.Clear();
@@ -121,8 +127,8 @@ namespace Program_For_Testing
             {
                 if (!participant.questions[index].SaveQuestion)
                 {
-                    tmpQuestion.answers = test.questions[index].CloneAnswers();
-                    tmpQuestion.TrueAswers = test.questions[index].TrueAswers;
+                    tmpQuestion.answers = _test.questions[index].CloneAnswers();
+                    tmpQuestion.TrueAswers = _test.questions[index].TrueAswers;
                 }
                 else
                 {
@@ -132,8 +138,8 @@ namespace Program_For_Testing
             }
             catch
             {
-                tmpQuestion.answers = test.questions[index].CloneAnswers();
-                tmpQuestion.TrueAswers = test.questions[index].TrueAswers;
+                tmpQuestion.answers = _test.questions[index].CloneAnswers();
+                tmpQuestion.TrueAswers = _test.questions[index].TrueAswers;
             }
             finally
             {
@@ -155,7 +161,7 @@ namespace Program_For_Testing
 
         private void bt_nextQuestion_Click(object sender, EventArgs e)
         {
-            if (index < test.AmountQuestions - 1)
+            if (index < _test.AmountQuestions - 1)
             {
                 SaveResults();
                 index++;
@@ -178,9 +184,9 @@ namespace Program_For_Testing
                 participant.questions[i].TrueAswers = 0;
                 foreach (string key in participant.questions[i].answers.Keys)
                 {
-                    if (participant.questions[i].answers[key] == test.questions[i].answers[key] && test.questions[i].answers[key] == true)
+                    if (participant.questions[i].answers[key] == _test.questions[i].answers[key] && _test.questions[i].answers[key] == true)
                         participant.questions[i].TrueAswers++;
-                    else if (participant.questions[i].answers[key] == true && test.questions[i].answers[key] == false)
+                    else if (participant.questions[i].answers[key] == true && _test.questions[i].answers[key] == false)
                         participant.questions[i].TrueAswers--;
                 }
             }
@@ -188,27 +194,27 @@ namespace Program_For_Testing
             participant.Points = 0;
             for (int i = 0; i < participant.questions.Count; i++)
             {
-                if (participant.questions[i].TrueAswers > test.questions[i].TrueAswers || participant.questions[i].TrueAswers <= 0)
+                if (participant.questions[i].TrueAswers > _test.questions[i].TrueAswers || participant.questions[i].TrueAswers <= 0)
                     continue;
 
-                else if (test.questions[i].TrueAswers == participant.questions[i].TrueAswers)
+                else if (_test.questions[i].TrueAswers == participant.questions[i].TrueAswers)
                 {
-                    if (!test.DefaultTest)
-                        participant.Points += test.questions[i].PointForQuestion;
+                    if (!_test.DefaultTest)
+                        participant.Points += _test.questions[i].PointForQuestion;
                     else
-                        participant.Points += test.DefaultPoint;
+                        participant.Points += _test.DefaultPoint;
                 }
 
                 else
                 {
-                    if (!test.DefaultTest)
-                        participant.Points += (test.questions[i].PointForQuestion / test.questions[i].TrueAswers) * participant.questions[i].TrueAswers;
+                    if (!_test.DefaultTest)
+                        participant.Points += (_test.questions[i].PointForQuestion / _test.questions[i].TrueAswers) * participant.questions[i].TrueAswers;
                     else
-                        participant.Points += (test.DefaultPoint / test.questions[i].TrueAswers) * participant.questions[i].TrueAswers;
+                        participant.Points += (_test.DefaultPoint / _test.questions[i].TrueAswers) * participant.questions[i].TrueAswers;
                 }
             }
-
-            MessageBox.Show("Ваши баллы: " + participant.Points.ToString());
+            _exSave.NewDocument();
+            _exSave.SaveDocument("test");
         }
     }
 }

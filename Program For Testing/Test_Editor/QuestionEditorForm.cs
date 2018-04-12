@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Test_Editor
+namespace TestEditor
 {
     public partial class QuestionEditorForm : Form
     {
@@ -40,9 +40,9 @@ namespace Test_Editor
             
         }
 
-        private void QuestionEditor_FormClosing(object sender, FormClosingEventArgs e)
+        private void bt_ok_Click(object sender, EventArgs e)
         {
-            test.questions[indexQuestion].answers.Add(textBox1.Text,checkBox1.Checked);
+            test.questions[indexQuestion].answers.Add(textBox1.Text, checkBox1.Checked);
         }
     }
 }

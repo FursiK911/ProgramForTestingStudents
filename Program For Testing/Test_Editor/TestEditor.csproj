@@ -91,21 +91,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\UI_Icons_Outline-05-512.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\open-folder-with-document_318-48982.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\save-button-icon-73092.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\help.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\exit.ico" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

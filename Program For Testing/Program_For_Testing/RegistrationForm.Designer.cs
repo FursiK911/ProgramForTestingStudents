@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrationForm));
             this.tb_fullName = new System.Windows.Forms.TextBox();
             this.lb_fullName = new System.Windows.Forms.Label();
             this.lb_specialty = new System.Windows.Forms.Label();
@@ -46,6 +47,8 @@
             // 
             // tb_fullName
             // 
+            this.tb_fullName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_fullName.Location = new System.Drawing.Point(12, 26);
             this.tb_fullName.Name = "tb_fullName";
             this.tb_fullName.Size = new System.Drawing.Size(169, 20);
@@ -53,6 +56,8 @@
             // 
             // lb_fullName
             // 
+            this.lb_fullName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_fullName.AutoSize = true;
             this.lb_fullName.Location = new System.Drawing.Point(9, 10);
             this.lb_fullName.Name = "lb_fullName";
@@ -62,6 +67,8 @@
             // 
             // lb_specialty
             // 
+            this.lb_specialty.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_specialty.AutoSize = true;
             this.lb_specialty.Location = new System.Drawing.Point(9, 57);
             this.lb_specialty.Name = "lb_specialty";
@@ -71,6 +78,8 @@
             // 
             // tb_specialty
             // 
+            this.tb_specialty.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_specialty.Location = new System.Drawing.Point(12, 73);
             this.tb_specialty.Name = "tb_specialty";
             this.tb_specialty.Size = new System.Drawing.Size(169, 20);
@@ -78,6 +87,8 @@
             // 
             // lb_course
             // 
+            this.lb_course.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_course.AutoSize = true;
             this.lb_course.Location = new System.Drawing.Point(9, 104);
             this.lb_course.Name = "lb_course";
@@ -87,6 +98,8 @@
             // 
             // tb_course
             // 
+            this.tb_course.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_course.Location = new System.Drawing.Point(12, 120);
             this.tb_course.Name = "tb_course";
             this.tb_course.Size = new System.Drawing.Size(169, 20);
@@ -94,6 +107,8 @@
             // 
             // lb_group
             // 
+            this.lb_group.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_group.AutoSize = true;
             this.lb_group.Location = new System.Drawing.Point(9, 150);
             this.lb_group.Name = "lb_group";
@@ -103,6 +118,8 @@
             // 
             // tb_group
             // 
+            this.tb_group.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_group.Location = new System.Drawing.Point(12, 166);
             this.tb_group.Name = "tb_group";
             this.tb_group.Size = new System.Drawing.Size(169, 20);
@@ -110,6 +127,7 @@
             // 
             // bt_start
             // 
+            this.bt_start.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bt_start.Location = new System.Drawing.Point(12, 231);
             this.bt_start.Name = "bt_start";
             this.bt_start.Size = new System.Drawing.Size(128, 53);
@@ -120,6 +138,7 @@
             // 
             // bt_cancel
             // 
+            this.bt_cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_cancel.Location = new System.Drawing.Point(263, 231);
             this.bt_cancel.Name = "bt_cancel";
             this.bt_cancel.Size = new System.Drawing.Size(128, 53);
@@ -130,6 +149,7 @@
             // 
             // cb_discipline
             // 
+            this.cb_discipline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cb_discipline.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_discipline.FormattingEnabled = true;
             this.cb_discipline.Location = new System.Drawing.Point(231, 25);
@@ -140,6 +160,7 @@
             // 
             // lb_discipline
             // 
+            this.lb_discipline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_discipline.AutoSize = true;
             this.lb_discipline.Location = new System.Drawing.Point(228, 9);
             this.lb_discipline.Name = "lb_discipline";
@@ -149,6 +170,7 @@
             // 
             // lb_topic
             // 
+            this.lb_topic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_topic.AutoSize = true;
             this.lb_topic.Location = new System.Drawing.Point(228, 57);
             this.lb_topic.Name = "lb_topic";
@@ -158,6 +180,7 @@
             // 
             // cb_topic
             // 
+            this.cb_topic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cb_topic.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_topic.FormattingEnabled = true;
             this.cb_topic.Location = new System.Drawing.Point(231, 73);
@@ -170,6 +193,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(403, 296);
             this.Controls.Add(this.lb_topic);
             this.Controls.Add(this.cb_topic);
@@ -185,7 +209,8 @@
             this.Controls.Add(this.tb_specialty);
             this.Controls.Add(this.lb_fullName);
             this.Controls.Add(this.tb_fullName);
-            this.MaximumSize = new System.Drawing.Size(419, 334);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(1000, 334);
             this.MinimumSize = new System.Drawing.Size(419, 334);
             this.Name = "RegistrationForm";
             this.Text = "Регистрация";

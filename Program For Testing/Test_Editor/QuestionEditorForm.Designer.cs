@@ -1,4 +1,4 @@
-﻿namespace Test_Editor
+﻿namespace TestEditor
 {
     partial class QuestionEditorForm
     {
@@ -32,6 +32,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.bt_ok = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -42,7 +43,7 @@
             this.textBox1.Location = new System.Drawing.Point(34, 34);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(378, 115);
+            this.textBox1.Size = new System.Drawing.Size(362, 116);
             this.textBox1.TabIndex = 2;
             // 
             // label1
@@ -63,19 +64,29 @@
             this.checkBox1.TabIndex = 4;
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // bt_ok
+            // 
+            this.bt_ok.Location = new System.Drawing.Point(405, 64);
+            this.bt_ok.Name = "bt_ok";
+            this.bt_ok.Size = new System.Drawing.Size(70, 61);
+            this.bt_ok.TabIndex = 5;
+            this.bt_ok.Text = "ОК";
+            this.bt_ok.UseVisualStyleBackColor = true;
+            this.bt_ok.Click += new System.EventHandler(this.bt_ok_Click);
+            // 
             // QuestionEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(424, 161);
+            this.ClientSize = new System.Drawing.Size(484, 162);
+            this.Controls.Add(this.bt_ok);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "QuestionEditorForm";
             this.Text = "Редактор вопроса";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuestionEditor_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -85,5 +96,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button bt_ok;
     }
 }

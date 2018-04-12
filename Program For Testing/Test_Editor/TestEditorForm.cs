@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Json;
 
-namespace Test_Editor
+namespace TestEditor
 {
     // TODO: Исправить баг с редактированием кл-ва вопросов
     // TODO: Исправить Anchor-ы на textBox-aх
@@ -28,7 +28,9 @@ namespace Test_Editor
             tb_pointForQuestion.Visible = false;
         }
 
-
+        /// <summary>
+        /// Вывод Question из List Question или создание нового Question, если ранее он не создавался
+        /// </summary>
         private void DataInQuestion()
         {
             if (index + 1 > test.questions.Count)
@@ -63,11 +65,14 @@ namespace Test_Editor
                 tmpQuestion.TrueAswers = test.questions[index].TrueAswers;
                 tmpQuestion.PointForQuestion = test.questions[index].PointForQuestion;
                 tb_pointForQuestion.Text = tmpQuestion.PointForQuestion.ToString();
-                PrintQuestion();
+                WriteQuestion();
             }
         }
 
-        private void PrintQuestion()
+        /// <summary>
+        /// Вывод текущего Question на форму
+        /// </summary>
+        private void WriteQuestion()
         {
             tb_academicDiscipline.Text = test.AcademicDiscipline;
             tb_topic.Text = test.Topic;
@@ -88,6 +93,10 @@ namespace Test_Editor
             }
         }
 
+        /// <summary>
+        /// Функция раскрывает или скрывает элементы управления на форме
+        /// </summary>
+        /// <param name="isVisible"></param>
         private void VisibleControlQuestions(bool isVisible)
         {
             lb_previousQuestion.Visible = isVisible;
@@ -113,6 +122,9 @@ namespace Test_Editor
             }
         }
 
+        /// <summary>
+        /// Сохранение текущего Question в List Question
+        /// </summary>
         private void SaveData()
         {
             tmpQuestion.question = tb_question.Text;
@@ -206,7 +218,9 @@ namespace Test_Editor
                 tb_points.Text = "";
             }
         }
-
+        /// <summary>
+        /// Полная очистка всех элементов управления на форме
+        /// </summary>
         private void ClearAllControl()
         {
             tb_academicDiscipline.Text = "";
@@ -290,7 +304,7 @@ namespace Test_Editor
             {
                 MessageBox.Show("Такой ответ уже существует!");
             }
-            PrintQuestion();
+            WriteQuestion();
         }
 
         private void bt_editAnswer_Click(object sender, EventArgs e)
@@ -309,7 +323,7 @@ namespace Test_Editor
                 MessageBox.Show("Выберите элемент!");
             }
 
-            PrintQuestion();
+            WriteQuestion();
             SaveData();
         }
 
