@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramForTesting", "Program_For_Testing\ProgramForTesting.csproj", "{ACFCF9D5-94FB-4FEC-ADD9-0CC0D8D5CA51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEditor", "Test_Editor\TestEditor.csproj", "{29E82208-FF5C-4828-95F6-15AF654FEE13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACFCF9D5-94FB-4FEC-ADD9-0CC0D8D5CA51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACFCF9D5-94FB-4FEC-ADD9-0CC0D8D5CA51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACFCF9D5-94FB-4FEC-ADD9-0CC0D8D5CA51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACFCF9D5-94FB-4FEC-ADD9-0CC0D8D5CA51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29E82208-FF5C-4828-95F6-15AF654FEE13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29E82208-FF5C-4828-95F6-15AF654FEE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29E82208-FF5C-4828-95F6-15AF654FEE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29E82208-FF5C-4828-95F6-15AF654FEE13}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
