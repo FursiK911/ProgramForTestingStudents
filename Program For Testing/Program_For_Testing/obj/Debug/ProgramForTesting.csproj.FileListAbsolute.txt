@@ -25,5 +25,3 @@ D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\De
 D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Debug\Test_Editor.pdb
 D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Debug\Program_For_Testing.exe
 D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Debug\Program_For_Testing.pdb
-D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Debug\Program_For_Testing.exe.CodeAnalysisLog.xml
-D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Debug\Program_For_Testing.exe.lastcodeanalysissucceeded

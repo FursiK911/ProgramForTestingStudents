@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
 using TestEditor;
+using System.IO;
 
 namespace Program_For_Testing
 {
@@ -18,7 +19,7 @@ namespace Program_For_Testing
         TestModel _test;
         Participant participant;
         QuestionModel tmpQuestion = new QuestionModel();
-        ExSave _exSave;
+        ExcelSave _exSave;
         int index = 0;
         public PassageOfTestingForm()
         {
@@ -30,8 +31,9 @@ namespace Program_For_Testing
             InitializeComponent();
             _test = t;
             participant = p;
-            _exSave = new ExSave(p);
+            _exSave = new ExcelSave(p, t);
             FillListBox();
+            _test.CreateWorkSpace();
         }
 
         private void FillListBox() 
@@ -50,9 +52,9 @@ namespace Program_For_Testing
             tb_question.Text = _test.questions[index].question;
 
             if (!_test.DefaultTest)
-                lb_pointForAnswer.Text = "Баллов за вопрос: " + _test.questions[index].PointForQuestion.ToString();
+                lb_pointForAnswer.Text = "Баллов за вопрос: " + _test.DoFormat(_test.questions[index].PointForQuestion);
             else
-                lb_pointForAnswer.Text = _test.DefaultPoint.ToString();
+                lb_pointForAnswer.Text = "Баллов за вопрос: " + _test.DoFormat(_test.DefaultPoint);
 
 
             clb_answers.Items.Clear();
@@ -213,8 +215,29 @@ namespace Program_For_Testing
                         participant.Points += (_test.DefaultPoint / _test.questions[i].TrueAswers) * participant.questions[i].TrueAswers;
                 }
             }
-            _exSave.NewDocument();
-            _exSave.SaveDocument("test");
+
+
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\Testing of Students\\Results\\" + _test.AcademicDiscipline + ".xls";
+
+            if (_exSave.ExcelIsPresent())
+            {
+                if (File.Exists(path))
+                {
+                    _exSave.OpenDocument(path);
+                    _exSave.WriteData();
+                    _exSave.SaveDocument();
+                    _exSave.CloseDocument();
+                }
+                else
+                {
+                    _exSave.NewDocument();
+                    _exSave.WriteData();
+                    _exSave.SaveAsDocument(path);
+                    _exSave.CloseDocument();
+                }
+            }
+            MessageBox.Show("Тест завершен! Вы набрали " + participant.DoFormat(participant.Points) + " баллов");
+            this.Close();
         }
     }
 }

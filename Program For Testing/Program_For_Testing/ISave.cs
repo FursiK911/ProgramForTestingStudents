@@ -11,6 +11,7 @@ namespace Program_For_Testing
         void OpenDocument(string name);
         void NewDocument();
         void CloseDocument();
-        void SaveDocument(string name);
+        void SaveAsDocument(string name);
+        void SaveDocument();
     }
 }

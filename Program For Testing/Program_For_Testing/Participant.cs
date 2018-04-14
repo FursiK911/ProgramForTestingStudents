@@ -20,5 +20,19 @@ namespace Program_For_Testing
         public double Points { get; set; }
 
         public List<QuestionModel> questions = new List<QuestionModel>();
+
+        public string DoFormat(double myPoints)
+        {
+            var s = string.Format("{0:0.00}", myPoints);
+
+            if (s.EndsWith("00"))
+            {
+                return ((int)myPoints).ToString();
+            }
+            else
+            {
+                return s;
+            }
+        }
     }
 }

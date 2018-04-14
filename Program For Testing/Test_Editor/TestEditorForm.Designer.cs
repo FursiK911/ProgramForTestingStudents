@@ -321,7 +321,8 @@
             this.tsb_create.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_create.Name = "tsb_create";
             this.tsb_create.Size = new System.Drawing.Size(23, 22);
-            this.tsb_create.Text = "Открыть";
+            this.tsb_create.Text = "Создать новый";
+            this.tsb_create.Click += new System.EventHandler(this.tsb_create_Click);
             // 
             // toolStripSeparator1
             // 
@@ -335,7 +336,8 @@
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.Text = "Открыть";
+            this.toolStripButton2.Click += new System.EventHandler(this.tsb_open_Click);
             // 
             // toolStripButton3
             // 
@@ -344,7 +346,8 @@
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolStripButton3.Text = "Сохранить";
+            this.toolStripButton3.Click += new System.EventHandler(this.tsb_save_Click);
             // 
             // toolStripSeparator2
             // 
@@ -358,7 +361,7 @@
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton5.Text = "toolStripButton5";
+            this.toolStripButton5.Text = "Помощь";
             // 
             // toolStripButton6
             // 
@@ -367,7 +370,8 @@
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
             this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton6.Text = "toolStripButton6";
+            this.toolStripButton6.Text = "Выход";
+            this.toolStripButton6.Click += new System.EventHandler(this.tsb_exit_Click);
             // 
             // TestEditorForm
             // 

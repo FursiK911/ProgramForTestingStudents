@@ -12,10 +12,9 @@ using System.Runtime.Serialization.Json;
 
 namespace TestEditor
 {
-    // TODO: Исправить баг с редактированием кл-ва вопросов
-    // TODO: Исправить Anchor-ы на textBox-aх
     public partial class TestEditorForm : Form
     {
+        //TODO: Допилить особый режим теста
         TestModel test = new TestModel();
         QuestionModel tmpQuestion = new QuestionModel();
         int index = 0;
@@ -79,7 +78,8 @@ namespace TestEditor
             tb_amountQuestions.Text = test.AmountQuestions.ToString();
             tb_question.Text = test.questions[index].question;
             cb_defaultTest.Checked = !test.DefaultTest;
-            tb_points.Text = test.MaxPoints.ToString();
+            tb_points.Text = (test.DefaultTest) ? test.MaxPoints.ToString() : test.DefaultPoint.ToString();
+            tb_pointForQuestion.Text = test.DoFormat(tmpQuestion.PointForQuestion);
             clb_answers.Items.Clear();
 
             foreach (string s in test.questions[index].answers.Keys)
@@ -143,13 +143,6 @@ namespace TestEditor
                     tmpQuestion.answers.Add(clb_answers.Items[i].ToString(), false);
             }
 
-            if (!test.DefaultTest)
-                tmpQuestion.PointForQuestion = double.Parse(tb_pointForQuestion.Text);
-            else
-                tmpQuestion.PointForQuestion = 0;
-
-            CalculatePoints();
-
             if (tmpQuestion.SaveQuestion)
             {
                 test.questions.RemoveAt(index);
@@ -203,18 +196,19 @@ namespace TestEditor
             {
                 if (!test.DefaultTest)
                 {
+                    test.MaxPoints = 0;
                     test.DefaultPoint = double.Parse(tb_points.Text);
                     tb_pointForQuestion.Text = test.DefaultPoint.ToString();
                 }
                 else
                 {
+                    test.DefaultPoint = 0;
                     test.MaxPoints = double.Parse(tb_points.Text);
                     test.DefaultPoint = test.MaxPoints / test.AmountQuestions;
                 }
             }
             catch
             {
-                MessageBox.Show("Введены некорректные данные!");
                 tb_points.Text = "";
             }
         }
@@ -250,22 +244,64 @@ namespace TestEditor
             {
                 if (tb_amountQuestions.Text != "" && int.Parse(tb_amountQuestions.Text) != 0)
                 {
-                    VisibleControlQuestions(true);
-                    test.AmountQuestions = int.Parse(tb_amountQuestions.Text);
+                    if (test.AmountQuestions == 0)
+                    {
+                        VisibleControlQuestions(true);
+                        test.AmountQuestions = int.Parse(tb_amountQuestions.Text);
+                    }
+                    else
+                    {
+                        if(test.questions.Count > int.Parse(tb_amountQuestions.Text))
+                        {
+                            string message = "Вы собираетесь уменьшить кл-во вопросов. Часть данных может быть утеряна, вы действительно хотите изменить количество вопросов?";
+                            string caption = "Уменьшить количество вопросов?";
+                            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                            DialogResult result;
+                            result = MessageBox.Show(this, message, caption, buttons);
+                            if (result == DialogResult.Yes)
+                            {
+                                index = 0;
+                                test.AmountQuestions = int.Parse(tb_amountQuestions.Text);
+                                test.questions.RemoveRange(test.AmountQuestions, test.questions.Count - test.AmountQuestions);
+                                WriteQuestion();
+                            }
+                            else
+                                tb_amountQuestions.Text = test.AmountQuestions.ToString();
+                        }
+
+                        else
+                        {
+                            VisibleControlQuestions(true);
+                            test.AmountQuestions = int.Parse(tb_amountQuestions.Text);
+                        }
+                    }
                 }
                 else
                     VisibleControlQuestions(false);
             }
             catch (FormatException)
             {
-                MessageBox.Show("Введены некорректные данные!");
+                MessageBox.Show("Некорректный ввод количества вопросов");
                 tb_amountQuestions.Text = "";
             }
         }
 
         private void tb_points_TextChanged(object sender, EventArgs e)
         {
-            CalculatePoints();
+            try
+            {
+                if (test.DefaultTest)
+                    test.MaxPoints = double.Parse(tb_points.Text);
+                else
+                    test.DefaultPoint = double.Parse(tb_points.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+            if (tb_pointForQuestion.Text == "")
+                tb_pointForQuestion.Text = test.DefaultPoint.ToString();
         }
 
         private void cb_defaultTest_CheckedChanged(object sender, EventArgs e)
@@ -346,7 +382,6 @@ namespace TestEditor
             }
             catch
             {
-                MessageBox.Show("Введены некорректные данные!");
                 tb_pointForQuestion.Text = "";
             }
         }
@@ -358,7 +393,6 @@ namespace TestEditor
             {
                 if (index >= 1)
                 {
-
                     index--;
                     DataInQuestion();
                 }
@@ -386,7 +420,7 @@ namespace TestEditor
             }
         }
 
-        private void ms_create_Click(object sender, EventArgs e)
+        private void tsb_create_Click(object sender, EventArgs e)
         {
             string message = "Вы собираетесь создать новый тест. Сохранить старый?";
             string caption = "Сохранить?";
@@ -396,7 +430,7 @@ namespace TestEditor
 
             if (result == DialogResult.Yes)
             {
-                ms_saveAs_Click(sender, e);
+                tsb_save_Click(sender, e);
                 test = new TestModel();
                 tmpQuestion = new QuestionModel();
                 ClearAllControl();
@@ -410,13 +444,14 @@ namespace TestEditor
             }
         }
 
-        private void ms_open_Click(object sender, EventArgs e)
+        private void tsb_open_Click(object sender, EventArgs e)
         {
             index = 0;
             OpenFileDialog opd = new OpenFileDialog();
             opd.Filter = "Test files (*.test)|*.test|All files (*.*)|*.*";
             opd.FilterIndex = 1;
             opd.RestoreDirectory = true;
+            opd.InitialDirectory = test.Path;
             if (opd.ShowDialog() == DialogResult.OK)
             {
                 using (FileStream fs = new FileStream(opd.FileName, FileMode.Open))
@@ -431,38 +466,26 @@ namespace TestEditor
             }
         }
 
-        private void ms_save_Click(object sender, EventArgs e)
+        private void tsb_save_Click(object sender, EventArgs e)
         {
             SaveData();
             DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
 
-            string path;
-            if (test.Path == "")
-            {
-                path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-                path += "\\Tests\\" + test.AcademicDiscipline + "." + test.Topic + ".test";
-                Directory.CreateDirectory(path);
-                test.Path = path;
-            }
-            else
-                path = test.Path;
-
-            using (FileStream fs = new FileStream(path, FileMode.Create))
+            using (FileStream fs = new FileStream(test.Path + test.AcademicDiscipline + "." + test.Topic + ".test", FileMode.Create))
             {
                 jsonFormatter.WriteObject(fs, test);
-            } 
+            }
+            MessageBox.Show("Тест успешно сохранен!");
         }
 
-        private void ms_saveAs_Click(object sender, EventArgs e)
+        private void tsb_saveAs_Click(object sender, EventArgs e)
         {
             SaveData();
             DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
             SaveFileDialog spd = new SaveFileDialog();
-
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\Tests\\";
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
-            spd.InitialDirectory = path;
+            if (!Directory.Exists(test.Path))
+                test.CreateWorkSpace();
+            spd.InitialDirectory = test.Path;
 
             if (spd.ShowDialog() == DialogResult.OK)
             {
@@ -473,7 +496,7 @@ namespace TestEditor
             }
         }
 
-        private void ms_exit_Click(object sender, EventArgs e)
+        private void tsb_exit_Click(object sender, EventArgs e)
          => Exit();
 
     }

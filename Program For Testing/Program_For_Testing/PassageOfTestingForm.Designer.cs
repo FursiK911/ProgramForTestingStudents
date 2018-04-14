@@ -93,7 +93,7 @@
             this.lbox_question.Location = new System.Drawing.Point(679, 26);
             this.lbox_question.Name = "lbox_question";
             this.lbox_question.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbox_question.Size = new System.Drawing.Size(149, 381);
+            this.lbox_question.Size = new System.Drawing.Size(149, 368);
             this.lbox_question.TabIndex = 5;
             this.lbox_question.SelectedIndexChanged += new System.EventHandler(this.lbox_question_SelectedIndexChanged);
             // 
@@ -121,9 +121,9 @@
             // 
             // lb_pointForAnswer
             // 
-            this.lb_pointForAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lb_pointForAnswer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_pointForAnswer.AutoSize = true;
-            this.lb_pointForAnswer.Location = new System.Drawing.Point(323, 168);
+            this.lb_pointForAnswer.Location = new System.Drawing.Point(272, 168);
             this.lb_pointForAnswer.Name = "lb_pointForAnswer";
             this.lb_pointForAnswer.Size = new System.Drawing.Size(94, 13);
             this.lb_pointForAnswer.TabIndex = 8;
@@ -158,6 +158,7 @@
             this.Controls.Add(this.lb_question);
             this.Controls.Add(this.tb_question);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(760, 377);
             this.Name = "PassageOfTestingForm";
             this.Text = "Тестирование";
             this.ResumeLayout(false);

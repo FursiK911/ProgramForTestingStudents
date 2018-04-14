@@ -18,3 +18,4 @@ D:\Учеба\C#\Курсовая\Program For Testing\Test_Editor\obj\Debug\Test
 D:\Учеба\C#\Курсовая\Program For Testing\Test_Editor\obj\Debug\TestEditor.csproj.GenerateResource.Cache
 D:\Учеба\C#\Курсовая\Program For Testing\Test_Editor\obj\Debug\Test_Editor.exe
 D:\Учеба\C#\Курсовая\Program For Testing\Test_Editor\obj\Debug\Test_Editor.pdb
+D:\Учеба\C#\Курсовая\Program For Testing\Test_Editor\obj\Debug\TestEditor.csprojResolveAssemblyReference.cache

@@ -43,6 +43,7 @@ namespace TestEditor
         private void bt_ok_Click(object sender, EventArgs e)
         {
             test.questions[indexQuestion].answers.Add(textBox1.Text, checkBox1.Checked);
+            this.Close();
         }
     }
 }

@@ -25,29 +25,35 @@ namespace Program_For_Testing
 
         private void Registration_Load(object sender, EventArgs e)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\Tests\\";
-
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\Testing of Students\\Tests";
             if (Directory.Exists(path))
             {
-                string[] nameFiles = Directory.GetFiles(path);
-                foreach (string file in nameFiles)
+                try
                 {
-                    FileStream fs = new FileStream(file, FileMode.Open);
-                    DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
-                    test.Add((TestModel)jsonFormatter.ReadObject(fs));
-
-                    bool inList = false;
-                    for (int i = 0; i < cb_discipline.Items.Count; i++)
+                    string[] nameFiles = Directory.GetFiles(path);
+                    foreach (string file in nameFiles)
                     {
-                        if (test[index].AcademicDiscipline == cb_discipline.Items[i].ToString())
+                        FileStream fs = new FileStream(file, FileMode.Open);
+                        DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
+                        test.Add((TestModel)jsonFormatter.ReadObject(fs));
+
+                        bool inList = false;
+                        for (int i = 0; i < cb_discipline.Items.Count; i++)
                         {
-                            inList = true;
-                            break;
+                            if (test[index].AcademicDiscipline == cb_discipline.Items[i].ToString())
+                            {
+                                inList = true;
+                                break;
+                            }
                         }
+                        if (!inList)
+                            cb_discipline.Items.Add(test[index].AcademicDiscipline);
+                        index++;
                     }
-                    if (!inList)
-                        cb_discipline.Items.Add(test[index].AcademicDiscipline);
-                    index++;
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка при попытке загрузить тест");
                 }
             }
             else
@@ -76,19 +82,19 @@ namespace Program_For_Testing
 
         private void bt_start_Click(object sender, EventArgs e)
         {
-            //if (tb_fullName.Text != "" && tb_specialty.Text != "" && tb_course.Text != "" && tb_group.Text != "" && cb_topic.SelectedItem != null)
-            //{
-            p.FullName = tb_fullName.Text;
-            p.Specialty = tb_specialty.Text;
-            p.Course = int.Parse(tb_course.Text);
-            p.Group = tb_group.Text;
-            this.Hide();
-            PassageOfTestingForm testingForm = new PassageOfTestingForm(test[index], p);
-            testingForm.ShowDialog();
-            this.Close();
-            //}
-            //else
-            //    MessageBox.Show("Введите недостающее поле!");
+            if (tb_fullName.Text != "" && tb_specialty.Text != "" && tb_course.Text != "" && tb_group.Text != "" && cb_topic.SelectedItem != null)
+            {
+                p.FullName = tb_fullName.Text;
+                p.Specialty = tb_specialty.Text;
+                p.Course = int.Parse(tb_course.Text);
+                p.Group = tb_group.Text;
+                this.Hide();
+                PassageOfTestingForm testingForm = new PassageOfTestingForm(test[index], p);
+                testingForm.ShowDialog();
+                this.Close();
+            }
+            else
+                MessageBox.Show("Введите недостающее поле!");
         }
     }
 }
