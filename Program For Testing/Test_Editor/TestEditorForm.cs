@@ -14,7 +14,6 @@ namespace TestEditor
 {
     public partial class TestEditorForm : Form
     {
-        //TODO: Допилить особый режим теста
         TestModel test = new TestModel();
         QuestionModel tmpQuestion = new QuestionModel();
         int index = 0;
@@ -63,6 +62,8 @@ namespace TestEditor
                 tmpQuestion.SaveQuestion = true;
                 tmpQuestion.TrueAswers = test.questions[index].TrueAswers;
                 tmpQuestion.PointForQuestion = test.questions[index].PointForQuestion;
+                if (tmpQuestion.PointForQuestion == 0)
+                    tmpQuestion.PointForQuestion = test.DefaultPoint;
                 tb_pointForQuestion.Text = tmpQuestion.PointForQuestion.ToString();
                 WriteQuestion();
             }
@@ -153,6 +154,10 @@ namespace TestEditor
                 tmpQuestion.SaveQuestion = true;
                 test.questions.Add(tmpQuestion.Clone());
             }
+
+            if (tmpQuestion.PointForQuestion == 0)
+                tmpQuestion.PointForQuestion = test.DefaultPoint;
+            tb_pointForQuestion.Text = tmpQuestion.PointForQuestion.ToString();
         }
         
         private void Exit()
@@ -190,28 +195,6 @@ namespace TestEditor
             }
         }
 
-        private void CalculatePoints()
-        {
-            try
-            {
-                if (!test.DefaultTest)
-                {
-                    test.MaxPoints = 0;
-                    test.DefaultPoint = double.Parse(tb_points.Text);
-                    tb_pointForQuestion.Text = test.DefaultPoint.ToString();
-                }
-                else
-                {
-                    test.DefaultPoint = 0;
-                    test.MaxPoints = double.Parse(tb_points.Text);
-                    test.DefaultPoint = test.MaxPoints / test.AmountQuestions;
-                }
-            }
-            catch
-            {
-                tb_points.Text = "";
-            }
-        }
         /// <summary>
         /// Полная очистка всех элементов управления на форме
         /// </summary>
@@ -226,6 +209,12 @@ namespace TestEditor
             clb_answers.Items.Clear();
             cb_defaultTest.Checked = false;
             index = 0;
+        }
+
+        private void CalculatePoints()
+        {
+            test.MaxPoints = double.Parse(tb_points.Text);
+            test.DefaultPoint = test.MaxPoints / test.AmountQuestions;
         }
 
         private void tb_academicDiscipline_TextChanged(object sender, EventArgs e)
@@ -469,6 +458,8 @@ namespace TestEditor
         private void tsb_save_Click(object sender, EventArgs e)
         {
             SaveData();
+            if (test.DefaultTest)
+                CalculatePoints();
             DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
 
             using (FileStream fs = new FileStream(test.Path + test.AcademicDiscipline + "." + test.Topic + ".test", FileMode.Create))

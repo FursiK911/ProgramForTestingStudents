@@ -149,6 +149,45 @@ namespace Program_For_Testing
             }
         }
 
+        private void CalculatePoints()
+        {
+            participant.Points = 0;
+            for (int i = 0; i < participant.questions.Count; i++)
+            {
+                participant.questions[i].TrueAswers = 0;
+                foreach (string key in participant.questions[i].answers.Keys)
+                {
+                    if (participant.questions[i].answers[key] == _test.questions[i].answers[key] && _test.questions[i].answers[key] == true)
+                        participant.questions[i].TrueAswers++;
+                    else if (participant.questions[i].answers[key] == true && _test.questions[i].answers[key] == false)
+                        participant.questions[i].TrueAswers--;
+                }
+            }
+
+            
+            for (int i = 0; i < participant.questions.Count; i++)
+            {
+                if (participant.questions[i].TrueAswers > _test.questions[i].TrueAswers || participant.questions[i].TrueAswers <= 0)
+                    continue;
+
+                else if (_test.questions[i].TrueAswers == participant.questions[i].TrueAswers)
+                {
+                    if (!_test.DefaultTest)
+                        participant.Points += _test.questions[i].PointForQuestion;
+                    else
+                        participant.Points += _test.DefaultPoint;
+                }
+
+                else
+                {
+                    if (!_test.DefaultTest)
+                        participant.Points += (_test.questions[i].PointForQuestion / _test.questions[i].TrueAswers) * participant.questions[i].TrueAswers;
+                    else
+                        participant.Points += (_test.DefaultPoint / _test.questions[i].TrueAswers) * participant.questions[i].TrueAswers;
+                }
+            }
+        }
+
         private void bt_previouslyQuestion_Click(object sender, EventArgs e)
         {
             if (index >= 1)
@@ -181,42 +220,7 @@ namespace Program_For_Testing
         private void bt_finish_Click(object sender, EventArgs e)
         {
             SaveResults();
-            for (int i = 0; i < participant.questions.Count; i++)
-            {
-                participant.questions[i].TrueAswers = 0;
-                foreach (string key in participant.questions[i].answers.Keys)
-                {
-                    if (participant.questions[i].answers[key] == _test.questions[i].answers[key] && _test.questions[i].answers[key] == true)
-                        participant.questions[i].TrueAswers++;
-                    else if (participant.questions[i].answers[key] == true && _test.questions[i].answers[key] == false)
-                        participant.questions[i].TrueAswers--;
-                }
-            }
-
-            participant.Points = 0;
-            for (int i = 0; i < participant.questions.Count; i++)
-            {
-                if (participant.questions[i].TrueAswers > _test.questions[i].TrueAswers || participant.questions[i].TrueAswers <= 0)
-                    continue;
-
-                else if (_test.questions[i].TrueAswers == participant.questions[i].TrueAswers)
-                {
-                    if (!_test.DefaultTest)
-                        participant.Points += _test.questions[i].PointForQuestion;
-                    else
-                        participant.Points += _test.DefaultPoint;
-                }
-
-                else
-                {
-                    if (!_test.DefaultTest)
-                        participant.Points += (_test.questions[i].PointForQuestion / _test.questions[i].TrueAswers) * participant.questions[i].TrueAswers;
-                    else
-                        participant.Points += (_test.DefaultPoint / _test.questions[i].TrueAswers) * participant.questions[i].TrueAswers;
-                }
-            }
-
-
+            CalculatePoints();
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\Testing of Students\\Results\\" + _test.AcademicDiscipline + ".xls";
 
             if (_exSave.ExcelIsPresent())
