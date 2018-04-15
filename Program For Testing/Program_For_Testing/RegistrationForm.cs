@@ -82,11 +82,12 @@ namespace Program_For_Testing
 
         private void bt_start_Click(object sender, EventArgs e)
         {
+
             if (tb_fullName.Text != "" && tb_specialty.Text != "" && tb_course.Text != "" && tb_group.Text != "" && cb_topic.SelectedItem != null)
             {
                 p.FullName = tb_fullName.Text;
                 p.Specialty = tb_specialty.Text;
-                p.Course = int.Parse(tb_course.Text);
+                p.Course = tb_course.Text;
                 p.Group = tb_group.Text;
                 this.Hide();
                 PassageOfTestingForm testingForm = new PassageOfTestingForm(test[index], p);

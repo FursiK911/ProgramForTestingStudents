@@ -279,18 +279,26 @@ namespace TestEditor
         {
             try
             {
-                if (test.DefaultTest)
-                    test.MaxPoints = double.Parse(tb_points.Text);
+                if (double.Parse(tb_points.Text) > 0)
+                {
+                    if (test.DefaultTest && tb_points.Text != "")
+                        test.MaxPoints = double.Parse(tb_points.Text);
+                    else if (!test.DefaultTest && tb_points.Text != "")
+                        test.DefaultPoint = double.Parse(tb_points.Text);
+
+                    if (tb_pointForQuestion.Text == "")
+                        tb_pointForQuestion.Text = test.DefaultPoint.ToString();
+                }
                 else
-                    test.DefaultPoint = double.Parse(tb_points.Text);
+                {
+                    MessageBox.Show("Баллы должны быть больше нуля!");
+                }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Баллы указаны некорректно!");
+                tb_points.Text = "";
             }
-           
-            if (tb_pointForQuestion.Text == "")
-                tb_pointForQuestion.Text = test.DefaultPoint.ToString();
         }
 
         private void cb_defaultTest_CheckedChanged(object sender, EventArgs e)
@@ -366,8 +374,15 @@ namespace TestEditor
         {
             try
             {
-                if (tb_pointForQuestion.Text != null && tb_pointForQuestion.Text != "0")
-                    tmpQuestion.PointForQuestion = double.Parse(tb_pointForQuestion.Text);
+                if (double.Parse(tb_pointForQuestion.Text) > 0)
+                {
+                    if (tb_pointForQuestion.Text != null && tb_pointForQuestion.Text != "0")
+                        tmpQuestion.PointForQuestion = double.Parse(tb_pointForQuestion.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Баллы должны быть больше нуля!");
+                }
             }
             catch
             {

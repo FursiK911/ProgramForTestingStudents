@@ -15,7 +15,7 @@ namespace Program_For_Testing
         }
         public string FullName { get; set; }
         public string Specialty { get; set; }
-        public int Course { get; set; }
+        public string Course { get; set; }
         public string Group { get; set; }
         public double Points { get; set; }
 
