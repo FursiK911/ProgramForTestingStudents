@@ -7,7 +7,7 @@ using TestEditor;
 
 namespace Program_For_Testing
 {
-    public class Participant
+    public class Participant : IFormat
     {
         public Participant()
         {

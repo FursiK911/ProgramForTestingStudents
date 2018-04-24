@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Test_Editor.Properties {
+namespace TestEditor.Properties {
     using System;
     
     

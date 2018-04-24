@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mainTest.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,7 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExcelSave.cs" />
+    <Compile Include="ExcelService.cs" />
+    <Compile Include="IFormat.cs" />
+    <Compile Include="ILoadable.cs" />
     <Compile Include="Participant.cs" />
     <Compile Include="PassageOfTestingForm.cs">
       <SubType>Form</SubType>
@@ -63,7 +68,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ISave.cs" />
+    <Compile Include="ISaveable.cs" />
     <EmbeddedResource Include="PassageOfTestingForm.resx">
       <DependentUpon>PassageOfTestingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +132,9 @@
       <Project>{29e82208-ff5c-4828-95f6-15af654fee13}</Project>
       <Name>TestEditor</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="mainTest.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

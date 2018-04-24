@@ -10,3 +10,16 @@ D:\Учеба\C#\Курсовая\Программа для тестирован
 D:\Учеба\C#\Курсовая\Программа для тестирования\Программа для тестирования\obj\Release\ProgramForTesting.csproj.GenerateResource.Cache
 D:\Учеба\C#\Курсовая\Программа для тестирования\Программа для тестирования\obj\Release\Программа для тестирования.exe
 D:\Учеба\C#\Курсовая\Программа для тестирования\Программа для тестирования\obj\Release\Программа для тестирования.pdb
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Release\Program_For_Testing.exe.config
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Release\ProgramForTesting.csproj.ResolveComReference.cache
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Release\Program_For_Testing.exe
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Release\Program_For_Testing.pdb
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Release\Test_Editor.exe
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\bin\Release\Test_Editor.pdb
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Release\ProgramForTesting.csprojResolveAssemblyReference.cache
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Release\Program_For_Testing.PassageOfTestingForm.resources
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Release\Program_For_Testing.RegistrationForm.resources
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Release\Program_For_Testing.Properties.Resources.resources
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Release\ProgramForTesting.csproj.GenerateResource.Cache
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Release\Program_For_Testing.exe
+D:\Учеба\C#\Курсовая\Program For Testing\Program_For_Testing\obj\Release\Program_For_Testing.pdb

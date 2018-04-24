@@ -12,7 +12,7 @@ using TestEditor;
 
 namespace Program_For_Testing
 {
-    class ExcelSave : ISave
+    class ExcelService : ISaveable , ILoadable
     {
 
         // Создаём экземпляр нашего приложения
@@ -25,7 +25,7 @@ namespace Program_For_Testing
         private Participant participant;
         private TestModel test;
 
-        public ExcelSave(Participant p, TestModel t)
+        public ExcelService(Participant p, TestModel t)
         {
             participant = p;
             test = t;

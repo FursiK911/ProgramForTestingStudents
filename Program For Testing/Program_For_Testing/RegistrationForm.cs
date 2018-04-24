@@ -95,7 +95,7 @@ namespace Program_For_Testing
                 this.Close();
             }
             else
-                MessageBox.Show("Введите недостающее поле!");
+                MessageBox.Show("Введите недостающие поля!");
         }
     }
 }

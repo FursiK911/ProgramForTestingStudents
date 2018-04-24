@@ -19,7 +19,7 @@ namespace Program_For_Testing
         TestModel _test;
         Participant participant;
         QuestionModel tmpQuestion = new QuestionModel();
-        ExcelSave _exSave;
+        ExcelService _exSave;
         int index = 0;
         public PassageOfTestingForm()
         {
@@ -31,7 +31,7 @@ namespace Program_For_Testing
             InitializeComponent();
             _test = t;
             participant = p;
-            _exSave = new ExcelSave(p, t);
+            _exSave = new ExcelService(p, t);
             FillListBox();
             _test.CreateWorkSpace();
         }

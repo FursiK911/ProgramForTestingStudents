@@ -162,34 +162,36 @@ namespace TestEditor
         
         private void Exit()
         {
-            string message = "Cохранить этот тест?";
-            string caption = "Выход";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
-            DialogResult result;
-            result = MessageBox.Show(this, message, caption, buttons);
-
-            if (result == DialogResult.Yes)
+            if (test.questions.Count != 0)
             {
-                SaveData();
-                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
-                SaveFileDialog spd = new SaveFileDialog();
+                string message = "Cохранить этот тест?";
+                string caption = "Выход";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
+                DialogResult result;
+                result = MessageBox.Show(this, message, caption, buttons);
 
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\Tests\\";
-                if (!Directory.Exists(path))
-                    Directory.CreateDirectory(path);
-                spd.InitialDirectory = path;
-
-                if (spd.ShowDialog() == DialogResult.OK)
+                if (result == DialogResult.Yes)
                 {
-                    using (FileStream fs = new FileStream((spd.FileName.IndexOf(".test") > -1) ? spd.FileName : spd.FileName + ".test" , FileMode.Create))
+                    SaveData();
+                    DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
+                    test.Path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\Testing of Students\\Tests\\";
+
+                    if (!Directory.Exists(test.Path))
+                        Directory.CreateDirectory(test.Path);
+
+                    using (FileStream fs = new FileStream(test.Path + test.AcademicDiscipline + "." + test.Topic + ".test", FileMode.Create))
                     {
                         jsonFormatter.WriteObject(fs, test);
                     }
+                    this.Close();
                 }
-                this.Close();
-            }
 
-            else if (result == DialogResult.No)
+                else if (result == DialogResult.No)
+                {
+                    this.Close();
+                }
+            }
+            else
             {
                 this.Close();
             }
@@ -204,8 +206,8 @@ namespace TestEditor
             tb_topic.Text = "";
             tb_amountQuestions.Text = "";
             tb_question.Text = "";
-            tb_points.Text = "";
-            tb_pointForQuestion.Text = "";
+            tb_points.Text = "0";
+            tb_pointForQuestion.Text = "0";
             clb_answers.Items.Clear();
             cb_defaultTest.Checked = false;
             index = 0;
@@ -279,7 +281,7 @@ namespace TestEditor
         {
             try
             {
-                if (double.Parse(tb_points.Text) > 0)
+                if (double.Parse(tb_points.Text) >= 0)
                 {
                     if (test.DefaultTest && tb_points.Text != "")
                         test.MaxPoints = double.Parse(tb_points.Text);
@@ -291,13 +293,13 @@ namespace TestEditor
                 }
                 else
                 {
-                    MessageBox.Show("Баллы должны быть больше нуля!");
+                    //MessageBox.Show("Баллы должны быть больше нуля!");
                 }
             }
             catch
             {
                 MessageBox.Show("Баллы указаны некорректно!");
-                tb_points.Text = "";
+                tb_points.Text = "0";
             }
         }
 
@@ -307,7 +309,7 @@ namespace TestEditor
             {
                 lb_pointForQuestion.Visible = true;
                 tb_pointForQuestion.Visible = true;
-                tb_points.Text = "";
+                tb_points.Text = "0";
                 test.DefaultTest = false;
                 lb_points.Text = "Балл за вопрос по умолчанию";
             }
@@ -315,7 +317,7 @@ namespace TestEditor
             {
                 lb_pointForQuestion.Visible = false;
                 tb_pointForQuestion.Visible = false;
-                tb_points.Text = "";
+                tb_points.Text = "0";
                 test.DefaultTest = true;
                 lb_points.Text = "Максимальное количество баллов";
             }
@@ -374,7 +376,7 @@ namespace TestEditor
         {
             try
             {
-                if (double.Parse(tb_pointForQuestion.Text) > 0)
+                if (double.Parse(tb_pointForQuestion.Text) >= 0)
                 {
                     if (tb_pointForQuestion.Text != null && tb_pointForQuestion.Text != "0")
                         tmpQuestion.PointForQuestion = double.Parse(tb_pointForQuestion.Text);
@@ -426,25 +428,28 @@ namespace TestEditor
 
         private void tsb_create_Click(object sender, EventArgs e)
         {
-            string message = "Вы собираетесь создать новый тест. Сохранить старый?";
-            string caption = "Сохранить?";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
-            DialogResult result;
-            result = MessageBox.Show(this, message, caption, buttons);
-
-            if (result == DialogResult.Yes)
+            if (test.questions.Count != 0)
             {
-                tsb_save_Click(sender, e);
-                test = new TestModel();
-                tmpQuestion = new QuestionModel();
-                ClearAllControl();
-            }
+                string message = "Вы собираетесь создать новый тест. Сохранить старый?";
+                string caption = "Сохранить?";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
+                DialogResult result;
+                result = MessageBox.Show(this, message, caption, buttons);
 
-            else if (result == DialogResult.No)
-            {
-                test = new TestModel();
-                tmpQuestion = new QuestionModel();
-                ClearAllControl();
+                if (result == DialogResult.Yes)
+                {
+                    tsb_save_Click(sender, e);
+                    test = new TestModel();
+                    tmpQuestion = new QuestionModel();
+                    ClearAllControl();
+                }
+
+                else if (result == DialogResult.No)
+                {
+                    test = new TestModel();
+                    tmpQuestion = new QuestionModel();
+                    ClearAllControl();
+                }
             }
         }
 
@@ -472,16 +477,20 @@ namespace TestEditor
 
         private void tsb_save_Click(object sender, EventArgs e)
         {
-            SaveData();
-            if (test.DefaultTest)
-                CalculatePoints();
-            DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
-
-            using (FileStream fs = new FileStream(test.Path + test.AcademicDiscipline + "." + test.Topic + ".test", FileMode.Create))
+            if (test.questions.Count != 0)
             {
-                jsonFormatter.WriteObject(fs, test);
+                SaveData();
+                if (test.DefaultTest)
+                    CalculatePoints();
+                DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(TestModel));
+
+                test.Path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\Testing of Students\\Tests\\";
+                using (FileStream fs = new FileStream(test.Path + test.AcademicDiscipline + "." + test.Topic + ".test", FileMode.Create))
+                {
+                    jsonFormatter.WriteObject(fs, test);
+                }
+                MessageBox.Show("Тест успешно сохранен!");
             }
-            MessageBox.Show("Тест успешно сохранен!");
         }
 
         private void tsb_saveAs_Click(object sender, EventArgs e)

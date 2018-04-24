@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Program_For_Testing
 {
-    interface ISave
+    interface ILoadable
     {
         void OpenDocument(string name);
         void NewDocument();
         void CloseDocument();
-        void SaveAsDocument(string name);
-        void SaveDocument();
     }
 }
